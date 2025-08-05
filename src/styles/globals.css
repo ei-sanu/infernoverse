@@ -1,0 +1,46 @@
+@keyframes neonBreathing {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px #00f0ff,
+            0 0 10px #00f0ff,
+            0 0 15px #00f0ff;
+        text-shadow: 0 0 5px #00f0ff,
+            0 0 10px #00f0ff;
+    }
+
+    50% {
+        box-shadow: 0 0 10px #00f0ff,
+            0 0 20px #00f0ff,
+            0 0 30px #00f0ff;
+        text-shadow: 0 0 10px #00f0ff,
+            0 0 20px #00f0ff;
+    }
+}
+
+.neon-button {
+    animation: neonBreathing 2s infinite;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.neon-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to bottom right,
+            rgba(0, 240, 255, 0) 0%,
+            rgba(0, 240, 255, 0.1) 50%,
+            rgba(0, 240, 255, 0) 100%);
+    transform: translateX(-100%) rotate(45deg);
+    transition: transform 0.6s;
+}
+
+.neon-button:hover::after {
+    transform: translateX(100%) rotate(45deg);
+}
