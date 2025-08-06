@@ -165,26 +165,53 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="absolute right-0 mt-2 w-64 bg-slate-800 border border-cyan-400/20 rounded-lg p-4 shadow-xl z-50"
+                      className="absolute right-0 mt-2 w-80 bg-slate-800 border border-cyan-400/20 rounded-lg p-6 shadow-xl z-50"
                     >
-                      <div className="text-cyan-400 font-medium">{user.displayName}</div>
-                      <div className="text-gray-300 text-sm">{user.email}</div>
-                      <button
-                        onClick={() => {
-                          setCurrentPage('registration');
-                          setShowProfile(false);
-                        }}
-                        className="w-full mt-2 px-4 py-2 bg-cyan-400/20 text-cyan-400 rounded hover:bg-cyan-400/30 transition-colors"
-                      >
-                        Register Now
-                      </button>
-                      <button
-                        onClick={handleSignOut}
-                        className="w-full mt-2 flex items-center justify-center space-x-2 px-4 py-2 bg-red-500/20 text-red-400 rounded hover:bg-red-500/30 transition-colors"
-                      >
-                        <LogOut className="w-4 h-4" />
-                        <span>Sign Out</span>
-                      </button>
+                      <div className="text-cyan-400 font-medium text-lg mb-1">{user.displayName}</div>
+                      <div className="text-gray-300 text-sm mb-4">{user.email}</div>
+
+                      <div className="space-y-3">
+                        <button
+                          onClick={() => {
+                            setCurrentPage('registration');
+                            setShowProfile(false);
+                          }}
+                          className="w-full px-4 py-2.5 bg-cyan-400/20 text-cyan-400 rounded hover:bg-cyan-400/30 transition-colors font-medium"
+                        >
+                          Register Now
+                        </button>
+
+                        <div className="text-sm text-gray-400 text-center py-2">
+                          By continuing, you agree to our{' '}
+                          <button
+                            onClick={() => {
+                              setCurrentPage('terms');
+                              setShowProfile(false);
+                            }}
+                            className="text-cyan-400 hover:underline"
+                          >
+                            Terms & Conditions
+                          </button>
+                          {' '}and{' '}
+                          <button
+                            onClick={() => {
+                              setCurrentPage('privacy');
+                              setShowProfile(false);
+                            }}
+                            className="text-cyan-400 hover:underline"
+                          >
+                            Privacy Policy
+                          </button>
+                        </div>
+
+                        <button
+                          onClick={handleSignOut}
+                          className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 bg-red-500/20 text-red-400 rounded hover:bg-red-500/30 transition-colors font-medium"
+                        >
+                          <LogOut className="w-4 h-4" />
+                          <span>Sign Out</span>
+                        </button>
+                      </div>
                     </motion.div>
                   )}
                 </div>

@@ -68,7 +68,10 @@ const App: React.FC = () => {
       case 'about':
         return <Home setCurrentPage={handlePageChange} user={user} />;
       case 'auth':
-        return <Auth onBack={() => handlePageChange('home')} />;
+        return <Auth
+          onBack={() => handlePageChange('home')}
+          setCurrentPage={handlePageChange}
+        />;
       case 'registration':
         return user ? (
           <Registration onBack={() => handlePageChange('home')} />

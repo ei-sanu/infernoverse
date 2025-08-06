@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Lock, Mail, User } from 'lucide-react';
 import React, { useState } from 'react';
 import { auth, googleProvider } from '../firebase/config';
-import Footer from './Footer'; // Add this import
 
 interface AuthProps {
   onBack: () => void;
+  setCurrentPage: (page: string) => void;  // Add this prop
 }
 
-const Auth: React.FC<AuthProps> = ({ onBack }) => {
+const Auth: React.FC<AuthProps> = ({ onBack, setCurrentPage }) => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -180,34 +180,23 @@ const Auth: React.FC<AuthProps> = ({ onBack }) => {
 
             <div className="mt-6 text-xs text-gray-400 text-center">
               By continuing, you agree to our{' '}
-              <a
-                href="/terms"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setCurrentPage('terms');
-                }}
+              <button
+                onClick={() => setCurrentPage('terms')}
                 className="text-cyan-400 hover:underline transition-colors"
               >
                 Terms & Conditions
-              </a>
+              </button>
               {' '}and{' '}
-              <a
-                href="/privacy"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setCurrentPage('privacy');
-                }}
+              <button
+                onClick={() => setCurrentPage('privacy')}
                 className="text-cyan-400 hover:underline transition-colors"
               >
                 Privacy Policy
-              </a>
+              </button>
             </div>
           </div>
         </motion.div>
       </div>
-
-      {/* Add Footer */}
-      <Footer />
     </div>
   );
 };

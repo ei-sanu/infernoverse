@@ -99,12 +99,6 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
                 Privacy Policy
               </a>
               <a
-                href="/conduct"
-                className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
-              >
-                Code of Conduct
-              </a>
-              <a
                 href="/refund"
                 className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
               >
