@@ -15,7 +15,6 @@ import Sponsors from './components/Sponsors';
 import Team from './components/Team';
 import TermsConditions from './components/TermsConditions';
 import { useAuth } from './hooks/useAuth';
-import {RefundPolicy} from './components/RefundPolicy';
 
 const App: React.FC = () => {
   const { user, loading } = useAuth();
@@ -39,8 +38,21 @@ const App: React.FC = () => {
     window.history.pushState(null, '', path);
   }, [currentPage]);
 
+  useEffect(() => {
+    // Handle browser back/forward navigation
+    const handlePopState = () => {
+      const path = window.location.pathname.substring(1) || 'home';
+      setCurrentPage(path);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const handlePageChange = (page: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    const path = page === 'home' ? '/' : `/${page}`;
+    window.history.pushState({ page }, '', path);
     setCurrentPage(page);
   };
 
