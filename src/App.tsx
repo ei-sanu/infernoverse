@@ -10,6 +10,7 @@ import Home from './components/Home';
 import Loader from './components/Loader';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ProblemStatements from './components/ProblemStatements';
+import RefundPolicy from './components/RefundPolicy';
 import Registration from './components/Registration';
 import Sponsors from './components/Sponsors';
 import Team from './components/Team';
@@ -93,6 +94,8 @@ const App: React.FC = () => {
         return <PrivacyPolicy onBack={() => handlePageChange('home')} />;
       case 'terms':
         return <TermsConditions onBack={() => handlePageChange('home')} />;
+      case 'refund':
+        return <RefundPolicy />;
       default:
         return <Home setCurrentPage={handlePageChange} user={user} />;
     }

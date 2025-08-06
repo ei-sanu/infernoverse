@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const RefundPolicy: React.FC = () => {
+interface RefundPolicyProps {
+    onBack: () => void;
+}
+
+const RefundPolicy: React.FC<RefundPolicyProps> = ({ onBack }) => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4">
             <motion.div
