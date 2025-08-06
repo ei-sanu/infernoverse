@@ -18,6 +18,20 @@
     }
 }
 
+@keyframes borderLight {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px #00f0ff,
+            inset 0 0 15px #00f0ff;
+    }
+
+    50% {
+        box-shadow: 0 0 30px #00f0ff,
+            inset 0 0 30px #00f0ff;
+    }
+}
+
 .neon-button {
     animation: neonBreathing 2s infinite;
     font-family: 'Orbitron', sans-serif;
@@ -43,4 +57,11 @@
 
 .neon-button:hover::after {
     transform: translateX(100%) rotate(45deg);
+}
+
+.neon-border-container {
+    position: relative;
+    animation: borderLight 3s infinite;
+    padding: 3px;
+    background: linear-gradient(45deg, #00f0ff20, #00f0ff40);
 }
