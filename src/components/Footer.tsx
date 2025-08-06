@@ -1,13 +1,17 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import React from 'react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  setCurrentPage: (page: string) => void;  // Remove the '?' to make it required
+}
+
+const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
   return (
     <footer className="bg-slate-900 border-t border-cyan-400/20 py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {/* Logo and Description */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-1 mb-8 md:mb-0">
             <motion.div
               className="text-2xl font-bold text-cyan-400 mb-4"
               style={{
@@ -21,29 +25,124 @@ const Footer: React.FC = () => {
               A premier 24-hour AI Hackathon bringing together 1,000+ brilliant innovators
               to solve real-world challenges using Artificial Intelligence.
             </p>
-            <div className="text-cyan-400">
+            <div className="text-cyan-400 mb-6">
               📅 September 20, 2025 | 📍 LPU, Punjab
+            </div>
+            {/* Social Media Icons */}
+            <div className="flex space-x-4">
+              <motion.a
+                href="https://linkedin.com/company/infernoverse"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="text-gray-300 hover:text-[#00f0ff] transition-colors duration-300"
+              >
+                <i className="fab fa-linkedin text-2xl" style={{ textShadow: '0 0 10px #00f0ff' }}></i>
+              </motion.a>
+              <motion.a
+                href="https://instagram.com/infernoverse"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="text-gray-300 hover:text-[#00f0ff] transition-colors duration-300"
+              >
+                <i className="fab fa-instagram text-2xl" style={{ textShadow: '0 0 10px #00f0ff' }}></i>
+              </motion.a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="pt-4">
             <h3 className="text-cyan-400 font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li><a href="#home" className="hover:text-cyan-400 transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-cyan-400 transition-colors">About</a></li>
-              <li><a href="#event" className="hover:text-cyan-400 transition-colors">Event</a></li>
-              <li><a href="#sponsors" className="hover:text-cyan-400 transition-colors">Sponsors</a></li>
-            </ul>
+            <div className="space-y-3 text-gray-300">
+              <button
+                onClick={() => setCurrentPage('home')}
+                className="block hover:text-cyan-400 transition-colors"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => setCurrentPage('event')}
+                className="block hover:text-cyan-400 transition-colors"
+              >
+                Event Details
+              </button>
+              <button
+                onClick={() => setCurrentPage('sponsors')}
+                className="block hover:text-cyan-400 transition-colors"
+              >
+                Sponsors
+              </button>
+              <button
+                onClick={() => setCurrentPage('contact')}
+                className="block hover:text-cyan-400 transition-colors"
+              >
+                Contact
+              </button>
+            </div>
           </div>
 
-          {/* Contact Info */}
-          <div>
+          {/* Legal Links */}
+          <div className="pt-4">
+            <h3 className="text-cyan-400 font-semibold mb-4">Legal</h3>
+            <div className="space-y-3 text-gray-300">
+              <button
+                onClick={() => setCurrentPage('terms')}
+                className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
+              >
+                Terms & Conditions
+              </button>
+              <button
+                onClick={() => setCurrentPage('privacy')}
+                className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
+              >
+                Privacy Policy
+              </button>
+              <button
+                onClick={() => setCurrentPage('conduct')}
+                className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
+              >
+                Code of Conduct
+              </button>
+              <button
+                onClick={() => setCurrentPage('refund')}
+                className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
+              >
+                Refund Policy
+              </button>
+            </div>
+          </div>
+
+          {/* Contact Info - Update the links to be buttons if they should trigger page changes */}
+          <div className="pt-4">
             <h3 className="text-cyan-400 font-semibold mb-4">Contact</h3>
-            <div className="space-y-2 text-gray-300">
-              <div>📧 info@infernoverse.com</div>
-              <div>📱 +91 98765 43210</div>
-              <div>🌐 www.infernoverse.com</div>
+            <div className="space-y-3 text-gray-300">
+              <div className="flex items-center space-x-2">
+                <span>📧</span>
+                <a
+                  href="mailto:info@infernoverse.com"
+                  className="hover:text-cyan-400 transition-colors"
+                >
+                  info@infernoverse.com
+                </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span>📱</span>
+                <a href="tel:+919876543210" className="hover:text-cyan-400 transition-colors">
+                  +91 98765 43210
+                </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span>🌐</span>
+                <a
+                  href="https://www.infernoverse.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-400 transition-colors"
+                >
+                  www.infernoverse.com
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -51,9 +150,44 @@ const Footer: React.FC = () => {
         <hr className="border-cyan-400/20 my-8" />
 
         {/* Copyright */}
-        <div className="text-center text-gray-400">
-          <p>© 2025 Inferno Verse Hackathon | Organized by Inferno Verse | All Rights Reserved</p>
-        </div>
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <p className="font-orbitron text-sm tracking-wider text-gray-400 flex items-center justify-center gap-2 flex-wrap">
+            <span
+              className="inline-flex items-center transform hover:scale-105 transition-transform duration-300 font-bold"
+              style={{
+                textShadow: '0 0 5px rgba(0, 240, 255, 0.5), 0 0 10px rgba(0, 240, 255, 0.3)',
+                letterSpacing: '0.1em'
+              }}
+            >
+              © 2025 INFERNO VERSE HACKATHON
+            </span>
+            <span className="text-cyan-400/50">|</span>
+            <span
+              className="inline-flex items-center transform hover:scale-105 transition-transform duration-300 font-bold"
+              style={{
+                textShadow: '0 0 5px rgba(0, 240, 255, 0.5), 0 0 10px rgba(0, 240, 255, 0.3)',
+                letterSpacing: '0.1em'
+              }}
+            >
+              ORGANIZED BY INFERNO VERSE
+            </span>
+            <span className="text-cyan-400/50">|</span>
+            <button
+              onClick={() => setCurrentPage('terms')}
+              className="text-cyan-400 hover:text-cyan-300 transition-colors font-bold"
+              style={{
+                textShadow: '0 0 5px rgba(0, 240, 255, 0.5), 0 0 10px rgba(0, 240, 255, 0.3)',
+                letterSpacing: '0.1em'
+              }}
+            >
+              ALL RIGHTS RESERVED
+            </button>
+          </p>
+        </motion.div>
       </div>
     </footer>
   );

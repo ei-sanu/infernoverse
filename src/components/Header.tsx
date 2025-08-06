@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
-import { motion } from 'framer-motion';
-import { Clock, LogOut, Menu, User, X } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Clock, LogOut, Settings, User, X } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
 import { auth } from '../firebase/config';
 import { useAuth } from '../hooks/useAuth';
 
@@ -15,11 +15,42 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [showProfile, setShowProfile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const profileRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
+  // Close menu immediately when page changes
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
+    setMobileMenuOpen(false);
+    setShowProfile(false);
+  }, [currentPage]);
+
+  // Handle click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+      if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
+        setShowProfile(false);
+      }
+    };
+
+    const handleScroll = () => {
+      setMobileMenuOpen(false);
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Clock timer
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -35,7 +66,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
   const navItems = [
     { name: 'HOME', key: 'home' },
-
     { name: 'EVENT', key: 'event' },
     { name: 'SPONSORS', key: 'sponsors' },
     { name: 'PROBLEM STATEMENTS', key: 'problem-statements', protected: true },
@@ -53,6 +83,16 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
       minute: '2-digit',
       second: '2-digit',
     });
+  };
+
+  const handleNavigation = (item: { key: string; protected: boolean }) => {
+    if (item.protected && !user) {
+      setCurrentPage('auth');
+    } else {
+      setCurrentPage(item.key);
+    }
+    // Immediately close mobile menu
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -81,13 +121,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             {navItems.map((item) => (
               <motion.button
                 key={item.key}
-                onClick={() => {
-                  if (item.protected && !user) {
-                    setCurrentPage('auth');
-                  } else {
-                    setCurrentPage(item.key);
-                  }
-                }}
+                onClick={() => handleNavigation(item)}
                 className={`text-sm font-medium transition-colors ${currentPage === item.key
                     ? 'text-cyan-400'
                     : 'text-gray-300 hover:text-cyan-400'
@@ -101,14 +135,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
           {/* Right side items */}
           <div className="flex items-center space-x-4">
-            {/* Real-time clock */}
+            {/* Clock */}
             <div className="hidden md:flex items-center text-cyan-400 text-sm">
               <Clock className="w-4 h-4 mr-2" />
               {formatTime(currentTime)}
             </div>
 
             {/* Profile/Auth */}
-            <div className="relative">
+            <div className="relative" ref={profileRef}>
               {user ? (
                 <div>
                   <motion.button
@@ -131,12 +165,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="absolute right-0 mt-2 w-64 bg-slate-800 border border-cyan-400/20 rounded-lg p-4 shadow-xl"
+                      className="absolute right-0 mt-2 w-64 bg-slate-800 border border-cyan-400/20 rounded-lg p-4 shadow-xl z-50"
                     >
                       <div className="text-cyan-400 font-medium">{user.displayName}</div>
                       <div className="text-gray-300 text-sm">{user.email}</div>
                       <button
-                        onClick={() => setCurrentPage('registration')}
+                        onClick={() => {
+                          setCurrentPage('registration');
+                          setShowProfile(false);
+                        }}
                         className="w-full mt-2 px-4 py-2 bg-cyan-400/20 text-cyan-400 rounded hover:bg-cyan-400/30 transition-colors"
                       >
                         Register Now
@@ -162,44 +199,57 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
               )}
             </div>
 
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-cyan-400"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile Menu Button */}
+            <div ref={mobileMenuRef} className="lg:hidden relative">
+              <motion.button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-cyan-400 p-2 hover:bg-cyan-400/10 rounded-lg transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.div
+                  animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {mobileMenuOpen ? (
+                    <X className="w-6 h-6" />
+                  ) : (
+                    <Settings className="w-6 h-6" />
+                  )}
+                </motion.div>
+              </motion.button>
+
+              {/* Mobile Navigation */}
+              <AnimatePresence>
+                {mobileMenuOpen && (
+                  <motion.nav
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full right-0 mt-2 w-48 bg-slate-800/95 backdrop-blur-md
+                             border border-cyan-400/20 rounded-lg shadow-xl z-50"
+                  >
+                    {navItems.map((item) => (
+                      <motion.button
+                        key={item.key}
+                        onClick={() => handleNavigation(item)}
+                        className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors
+                          ${currentPage === item.key
+                            ? 'text-cyan-400 bg-cyan-400/10'
+                            : 'text-gray-300 hover:text-cyan-400 hover:bg-cyan-400/5'
+                          }`}
+                        whileHover={{ x: 4 }}
+                      >
+                        {item.name}
+                      </motion.button>
+                    ))}
+                  </motion.nav>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            className="lg:hidden mt-4 pt-4 border-t border-cyan-400/20"
-          >
-            {navItems.map((item) => (
-              <button
-                key={item.key}
-                onClick={() => {
-                  if (item.protected && !user) {
-                    setCurrentPage('auth');
-                  } else {
-                    setCurrentPage(item.key);
-                  }
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left py-2 text-sm font-medium transition-colors ${currentPage === item.key
-                    ? 'text-cyan-400'
-                    : 'text-gray-300 hover:text-cyan-400'
-                  }`}
-              >
-                {item.name}
-              </button>
-            ))}
-          </motion.nav>
-        )}
       </div>
     </motion.header>
   );

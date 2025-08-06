@@ -8,10 +8,12 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
 import Loader from './components/Loader';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import ProblemStatements from './components/ProblemStatements';
 import Registration from './components/Registration';
 import Sponsors from './components/Sponsors';
 import Team from './components/Team';
+import TermsConditions from './components/TermsConditions';
 import { useAuth } from './hooks/useAuth';
 
 const App: React.FC = () => {
@@ -65,6 +67,10 @@ const App: React.FC = () => {
         return <Contact setCurrentPage={handlePageChange} />;
       case 'team':
         return <Team />;
+      case 'privacy':
+        return <PrivacyPolicy onBack={() => setCurrentPage('home')} />;
+      case 'terms':
+        return <TermsConditions onBack={() => setCurrentPage('home')} />;
       default:
         return <Home setCurrentPage={handlePageChange} user={user} />;
     }

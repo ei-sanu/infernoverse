@@ -155,3 +155,12 @@
 .number-pop {
     animation: numberPop 0.3s ease-out;
 }
+
+/* Social Media Icons Animation */
+.fab {
+    transition: text-shadow 0.3s ease;
+}
+
+.fab:hover {
+    text-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+}
