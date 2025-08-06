@@ -73,7 +73,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             onClick={() => setCurrentPage('home')}
             whileHover={{ scale: 1.05 }}
           >
-            INFERNO
+            INFERNO VERSE
           </motion.div>
 
           {/* Desktop Navigation */}
