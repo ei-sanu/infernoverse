@@ -15,10 +15,15 @@ import Sponsors from './components/Sponsors';
 import Team from './components/Team';
 import TermsConditions from './components/TermsConditions';
 import { useAuth } from './hooks/useAuth';
+import {RefundPolicy} from './components/RefundPolicy';
 
 const App: React.FC = () => {
   const { user, loading } = useAuth();
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState(() => {
+    // Get initial page from URL path or default to home
+    const path = window.location.pathname.substring(1) || 'home';
+    return path;
+  });
   const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
@@ -27,6 +32,12 @@ const App: React.FC = () => {
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    // Update URL when page changes
+    const path = currentPage === 'home' ? '/' : `/${currentPage}`;
+    window.history.pushState(null, '', path);
+  }, [currentPage]);
 
   const handlePageChange = (page: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -54,12 +65,11 @@ const App: React.FC = () => {
       case 'event':
         return <Event />;
       case 'problem-statements':
-        // Change this condition based on hackathon start
-        const hackathonStarted = true; // Set this to true when hackathon starts
+        const hackathonStarted = true;
         return hackathonStarted ? (
-          <ProblemStatements onBack={() => setCurrentPage('home')} />
+          <ProblemStatements onBack={() => handlePageChange('home')} />
         ) : (
-          <DiscloseProblems onBack={() => setCurrentPage('home')} />
+          <DiscloseProblems onBack={() => handlePageChange('home')} />
         );
       case 'sponsors':
         return <Sponsors setCurrentPage={handlePageChange} />;
@@ -68,18 +78,20 @@ const App: React.FC = () => {
       case 'team':
         return <Team />;
       case 'privacy':
-        return <PrivacyPolicy onBack={() => setCurrentPage('home')} />;
+        return <PrivacyPolicy onBack={() => handlePageChange('home')} />;
       case 'terms':
-        return <TermsConditions onBack={() => setCurrentPage('home')} />;
+        return <TermsConditions onBack={() => handlePageChange('home')} />;
       default:
         return <Home setCurrentPage={handlePageChange} user={user} />;
     }
   };
 
+  const shouldShowHeaderFooter = !['auth', 'registration'].includes(currentPage);
+
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
+    <div className="min-h-screen bg-slate-900 text-white flex flex-col">
       <AnimatePresence mode="wait">
-        {currentPage !== 'auth' && currentPage !== 'registration' && (
+        {shouldShowHeaderFooter && (
           <Header currentPage={currentPage} setCurrentPage={handlePageChange} />
         )}
 
@@ -89,11 +101,12 @@ const App: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
+          className="flex-grow"
         >
           {renderPage()}
         </motion.main>
 
-        {currentPage !== 'auth' && currentPage !== 'registration' && <Footer />}
+        {shouldShowHeaderFooter && <Footer />}
       </AnimatePresence>
     </div>
   );

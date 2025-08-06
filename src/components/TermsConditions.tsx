@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import React from 'react';
-import Footer from './Footer';
 
 interface TermsConditionsProps {
     onBack: () => void;
@@ -128,7 +127,6 @@ const TermsConditions: React.FC<TermsConditionsProps> = ({ onBack }) => {
                     </div>
                 </motion.div>
             </div>
-            <Footer />
         </div>
     );
 };

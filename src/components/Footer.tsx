@@ -55,30 +55,30 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
           <div className="pt-4">
             <h3 className="text-cyan-400 font-semibold mb-4">Quick Links</h3>
             <div className="space-y-3 text-gray-300">
-              <button
-                onClick={() => setCurrentPage('home')}
+              <a
+                href="/"
                 className="block hover:text-cyan-400 transition-colors"
               >
                 Home
-              </button>
-              <button
-                onClick={() => setCurrentPage('event')}
+              </a>
+              <a
+                href="/event"
                 className="block hover:text-cyan-400 transition-colors"
               >
                 Event Details
-              </button>
-              <button
-                onClick={() => setCurrentPage('sponsors')}
+              </a>
+              <a
+                href="/sponsors"
                 className="block hover:text-cyan-400 transition-colors"
               >
                 Sponsors
-              </button>
-              <button
-                onClick={() => setCurrentPage('contact')}
+              </a>
+              <a
+                href="/contact"
                 className="block hover:text-cyan-400 transition-colors"
               >
                 Contact
-              </button>
+              </a>
             </div>
           </div>
 
@@ -86,30 +86,30 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
           <div className="pt-4">
             <h3 className="text-cyan-400 font-semibold mb-4">Legal</h3>
             <div className="space-y-3 text-gray-300">
-              <button
-                onClick={() => setCurrentPage('terms')}
+              <a
+                href="/terms"
                 className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
               >
                 Terms & Conditions
-              </button>
-              <button
-                onClick={() => setCurrentPage('privacy')}
+              </a>
+              <a
+                href="/privacy"
                 className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
               >
                 Privacy Policy
-              </button>
-              <button
-                onClick={() => setCurrentPage('conduct')}
+              </a>
+              <a
+                href="/conduct"
                 className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
               >
                 Code of Conduct
-              </button>
-              <button
-                onClick={() => setCurrentPage('refund')}
+              </a>
+              <a
+                href="/refund"
                 className="block w-full text-left hover:text-cyan-400 transition-colors cursor-pointer"
               >
                 Refund Policy
-              </button>
+              </a>
             </div>
           </div>
 
