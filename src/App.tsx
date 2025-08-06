@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import Auth from './components/Auth';
 import Contact from './components/Contact';
+import DiscloseProblems from './components/DiscloseProblems';
 import Event from './components/Event';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -51,10 +52,12 @@ const App: React.FC = () => {
       case 'event':
         return <Event />;
       case 'problem-statements':
-        return user ? (
-          <ProblemStatements onBack={() => handlePageChange('home')} />
+        // Change this condition based on hackathon start
+        const hackathonStarted = true; // Set this to true when hackathon starts
+        return hackathonStarted ? (
+          <ProblemStatements onBack={() => setCurrentPage('home')} />
         ) : (
-          <Auth onBack={() => handlePageChange('home')} />
+          <DiscloseProblems onBack={() => setCurrentPage('home')} />
         );
       case 'sponsors':
         return <Sponsors setCurrentPage={handlePageChange} />;

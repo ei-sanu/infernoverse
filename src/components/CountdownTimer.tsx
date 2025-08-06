@@ -1,79 +1,144 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 
 const CountdownTimer: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
+    days: 44,
+    hours: 11,
+    minutes: 15,
+    seconds: 54
   });
-  const [isEventCompleted, setIsEventCompleted] = useState(false);
+
+  // Use ref instead of state for previous values to avoid re-renders
+  const prevValues = useRef({ ...timeLeft });
 
   useEffect(() => {
-    const targetDate = new Date('2025-09-20T00:00:00').getTime();
-
     const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
+      setTimeLeft(prev => {
+        const newTime = {
+          days: prev.days,
+          hours: prev.hours,
+          minutes: prev.minutes,
+          seconds: prev.seconds - 1
+        };
 
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000),
-        });
-      } else {
-        setIsEventCompleted(true);
-      }
+        if (newTime.seconds < 0) {
+          newTime.seconds = 59;
+          newTime.minutes -= 1;
+        }
+        if (newTime.minutes < 0) {
+          newTime.minutes = 59;
+          newTime.hours -= 1;
+        }
+        if (newTime.hours < 0) {
+          newTime.hours = 23;
+          newTime.days -= 1;
+        }
+
+        // Only update prevValues when the respective unit changes
+        if (newTime.seconds === 59) prevValues.current.minutes = prev.minutes;
+        if (newTime.minutes === 59) prevValues.current.hours = prev.hours;
+        if (newTime.hours === 23) prevValues.current.days = prev.days;
+
+        // Always update seconds in prevValues
+        prevValues.current.seconds = prev.seconds;
+
+        return newTime;
+      });
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
-  if (isEventCompleted) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
-      >
-        <h2 className="text-3xl font-bold text-cyan-400 mb-4">Event Concluded</h2>
-        <p className="text-gray-300 text-lg mb-2">
-          Inferno Verse 2025 has successfully concluded!
-        </p>
-        <p className="text-gray-400">
-          Thank you to all participants, mentors, and sponsors for making this event a great success.
-        </p>
-      </motion.div>
-    );
-  }
+  const hasChanged = (unit: keyof typeof timeLeft) => {
+    return timeLeft[unit] !== prevValues.current[unit];
+  };
 
-  return (
+  const TimeUnit = ({ value, label, hasChanged }: {
+    value: number;
+    label: string;
+    hasChanged: boolean;
+  }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8"
+      className="flex flex-col items-center"
     >
-      <h2 className="text-2xl font-bold text-cyan-400 text-center mb-6">
-        HACKATHON STATUS
-      </h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {Object.entries(timeLeft).map(([unit, value]) => (
-          <motion.div
-            key={unit}
-            whileHover={{ scale: 1.05 }}
-            className="text-center"
-          >
-            <div className="bg-cyan-400/10 border border-cyan-400/30 rounded-lg p-4">
-              <div className="text-3xl font-bold text-cyan-400">{value}</div>
-              <div className="text-gray-300 text-sm uppercase">{unit}</div>
-            </div>
-          </motion.div>
-        ))}
+      <div className="relative">
+        <motion.div
+          className="bg-[#0d0d1a]/80 backdrop-blur-sm border border-[#00f0ff]/30 rounded-lg p-4 w-28
+          flex items-center justify-center relative overflow-hidden group"
+          whileHover={{ scale: 1.05 }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={`${label}-${value}`}
+              initial={hasChanged ? { scale: 1.2, opacity: 0.5 } : false}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                textShadow: hasChanged ? ['0 0 20px #00f0ff', '0 0 10px #00f0ff'] : '0 0 10px #00f0ff'
+              }}
+              transition={{
+                duration: hasChanged ? 0.3 : 0,
+                ease: "easeOut"
+              }}
+              className="font-orbitron text-4xl font-bold text-[#00f0ff] relative z-10 tracking-wider"
+            >
+              {String(value).padStart(2, '0')}
+            </motion.span>
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Reflection effect */}
+        <div className="h-1/2 w-full bg-gradient-to-b from-[#00f0ff]/10 to-transparent
+        rounded-b-lg transform scale-y-[-1] mt-1 opacity-50" />
       </div>
+
+      <span className="mt-2 font-orbitron text-sm uppercase tracking-widest text-[#00f0ff]/80">
+        {label}
+      </span>
     </motion.div>
+  );
+
+  return (
+    <div className="text-center">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-4xl font-orbitron font-bold text-[#00f0ff] mb-12 tracking-wider"
+        style={{ textShadow: '0 0 30px #00f0ff' }}
+      >
+        HACKATHON STATUS
+      </motion.h2>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="flex flex-wrap justify-center gap-6 md:gap-8"
+      >
+        <TimeUnit
+          value={timeLeft.days}
+          label="days"
+          hasChanged={hasChanged('days')}
+        />
+        <TimeUnit
+          value={timeLeft.hours}
+          label="hours"
+          hasChanged={hasChanged('hours')}
+        />
+        <TimeUnit
+          value={timeLeft.minutes}
+          label="minutes"
+          hasChanged={hasChanged('minutes')}
+        />
+        <TimeUnit
+          value={timeLeft.seconds}
+          label="seconds"
+          hasChanged={hasChanged('seconds')}
+        />
+      </motion.div>
+    </div>
   );
 };
 

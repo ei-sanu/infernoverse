@@ -117,7 +117,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
           </motion.p>
 
           <motion.p
-            className="cyberpunk-text text-lg md:text-xl mb-8 max-w-4xl mx-auto"
+            className="font-exo text-lg md:text-xl mb-8 max-w-4xl mx-auto text-[#e6e6e6]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
@@ -196,7 +196,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
               <h2 className="text-4xl font-bold text-[#00f0ff] mb-6 neon-text">
                 About Inferno Verse
               </h2>
-              <p className="text-[#bfbfbf] text-lg leading-relaxed mb-6">
+              <p className="font-exo text-lg leading-relaxed mb-6 text-[#e6e6e6]">
                 We're thrilled to announce Inferno Verse — our flagship 24-hour AI Hackathon happening
                 end of September 2025 at LPU. This high-energy event will bring together 1,000+ brilliant
                 innovators (and growing) from across the country to solve real-world challenges using
@@ -255,13 +255,13 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             >
               <h2 className="text-3xl font-bold text-[#00f0ff] mb-4 neon-text">HOSTED BY LPU</h2>
               <h3 className="text-2xl font-semibold text-white mb-6">Lovely Professional University</h3>
-              <p className="text-[#bfbfbf] text-lg leading-relaxed">
+              <p className="font-exo text-lg leading-relaxed text-[#e6e6e6]">
                 Lovely Professional University (LPU) stands as a beacon of modern education, blending
                 innovation, ambition, and opportunity on its sprawling 600-acre campus in Punjab, India.
                 A global melting pot of talent, LPU hosts students from across India and beyond 30
                 countries, creating an ecosystem that thrives on diversity and creativity.
               </p>
-              <p className="text-[#bfbfbf] text-lg leading-relaxed mt-4">
+              <p className="font-exo text-lg leading-relaxed text-[#e6e6e6] mt-4">
                 Renowned for its advanced infrastructure, industry-aligned programs, and a stellar track
                 record in placements, LPU is more than a university—it's a launchpad for trailblazers.
                 From cutting-edge labs to a passion for problem-solving, LPU sets the stage for events
@@ -302,7 +302,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
               >
                 <highlight.icon className="w-12 h-12 text-[#00f0ff] mx-auto mb-4 neon-text" />
                 <h3 className="text-xl font-bold text-[#00f0ff] mb-3 neon-text">{highlight.title}</h3>
-                <p className="text-[#bfbfbf]">{highlight.description}</p>
+                <p className="font-exo text-[#e6e6e6]">{highlight.description}</p>
               </motion.div>
             ))}
           </div>
@@ -331,7 +331,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
           >
             <h2 className="text-4xl font-bold text-[#00f0ff] mb-4">OUR TEAM</h2>
             <h3 className="text-2xl font-semibold text-white mb-6">MEET THE TEAM</h3>
-            <p className="text-[#bfbfbf] text-lg mb-8 max-w-2xl mx-auto">
+            <p className="font-exo text-lg mb-8 max-w-2xl mx-auto text-[#e6e6e6]">
               Get to know the passionate individuals behind Inferno Verse who make it all happen.
             </p>
             <motion.button
@@ -427,7 +427,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             viewport={{ once: true }}
             className="text-center mt-12 bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-8"
           >
-            <p className="text-[#bfbfbf] text-lg">
+            <p className="font-exo text-lg text-[#e6e6e6]">
               🎁 <strong className="text-[#00f0ff]">Co-powered by GeeksforGeeks</strong> -
               Exciting goodies and certifications for winners and top 10 participants that will boost your CV!
             </p>
@@ -460,7 +460,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
                 className="bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-6"
               >
                 <h3 className="text-xl font-bold text-[#00f0ff] mb-3">{faq.question}</h3>
-                <p className="text-[#bfbfbf] leading-relaxed">{faq.answer}</p>
+                <p className="font-exo leading-relaxed text-[#e6e6e6]">{faq.answer}</p>
               </motion.div>
             ))}
           </div>

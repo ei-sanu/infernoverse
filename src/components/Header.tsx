@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Clock, User, LogOut, Menu, X } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
 import { signOut } from 'firebase/auth';
+import { motion } from 'framer-motion';
+import { Clock, LogOut, Menu, User, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { auth } from '../firebase/config';
+import { useAuth } from '../hooks/useAuth';
 
 interface HeaderProps {
   currentPage: string;
@@ -73,7 +73,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             onClick={() => setCurrentPage('home')}
             whileHover={{ scale: 1.05 }}
           >
-            INFERNO VERSE
+            INFERNO
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -88,11 +88,10 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                     setCurrentPage(item.key);
                   }
                 }}
-                className={`text-sm font-medium transition-colors ${
-                  currentPage === item.key
+                className={`text-sm font-medium transition-colors ${currentPage === item.key
                     ? 'text-cyan-400'
                     : 'text-gray-300 hover:text-cyan-400'
-                }`}
+                  }`}
                 whileHover={{ scale: 1.05 }}
               >
                 {item.name}
@@ -191,11 +190,10 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                   }
                   setMobileMenuOpen(false);
                 }}
-                className={`block w-full text-left py-2 text-sm font-medium transition-colors ${
-                  currentPage === item.key
+                className={`block w-full text-left py-2 text-sm font-medium transition-colors ${currentPage === item.key
                     ? 'text-cyan-400'
                     : 'text-gray-300 hover:text-cyan-400'
-                }`}
+                  }`}
               >
                 {item.name}
               </button>

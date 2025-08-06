@@ -1,3 +1,6 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* Base animations */
 @keyframes neonBreathing {
 
     0%,
@@ -32,12 +35,62 @@
     }
 }
 
+@keyframes iconPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse-border {
+
+    0%,
+    100% {
+        border-color: rgba(0, 240, 255, 0.3);
+        box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    }
+
+    50% {
+        border-color: rgba(0, 240, 255, 0.6);
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+    }
+}
+
+/* Add this with your other animations */
+@keyframes numberPop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+        text-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Button styles */
 .neon-button {
     animation: neonBreathing 2s infinite;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
     position: relative;
     overflow: hidden;
+}
+
+.neon-button i {
+    margin-right: 8px;
+    animation: iconPulse 2s infinite;
 }
 
 .neon-button::after {
@@ -59,9 +112,46 @@
     transform: translateX(100%) rotate(45deg);
 }
 
+/* Container styles */
 .neon-border-container {
     position: relative;
     animation: borderLight 3s infinite;
     padding: 3px;
     background: linear-gradient(45deg, #00f0ff20, #00f0ff40);
+    transition: transform 0.3s ease-in-out;
+}
+
+.neon-border-container:hover {
+    transform: translateY(-5px);
+}
+
+/* Icon styles */
+.neon-icon {
+    color: #00f0ff;
+    text-shadow: 0 0 10px #00f0ff;
+    animation: iconPulse 2s infinite;
+}
+
+/* Text effects */
+.cyber-text {
+    font-family: 'Orbitron', sans-serif;
+    color: #00f0ff;
+    text-shadow: 0 0 10px #00f0ff;
+    letter-spacing: 2px;
+}
+
+/* Glass effect */
+.glass-effect {
+    background: rgba(0, 240, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+.countdown-unit {
+    animation: pulse-border 2s infinite;
+}
+
+.number-pop {
+    animation: numberPop 0.3s ease-out;
 }

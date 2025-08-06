@@ -8,6 +8,7 @@ export default {
         audiowide: ['Audiowide', 'cursive'],
         'share-tech': ['"Share Tech Mono"', 'monospace'],
         rajdhani: ['Rajdhani', 'sans-serif'],
+        exo: ['"Exo 2"', 'sans-serif'],
       },
     },
   },
