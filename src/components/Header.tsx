@@ -23,6 +23,24 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     return () => clearInterval(timer);
   }, []);
 
+  // Close mobile menu when page changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [currentPage]);
+
+  // Close profile dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (showProfile && !target.closest('.profile-dropdown')) {
+        setShowProfile(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showProfile]);
+
   const handleSignOut = async () => {
     try {
       await signOut(auth);
@@ -33,9 +51,18 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     }
   };
 
+  const handleNavigation = (page: string, isProtected?: boolean) => {
+    if (isProtected && !user) {
+      setCurrentPage('auth');
+    } else {
+      setCurrentPage(page);
+    }
+    setMobileMenuOpen(false); // Ensure mobile menu closes
+    setShowProfile(false); // Close profile dropdown
+  };
+
   const navItems = [
     { name: 'HOME', key: 'home' },
-
     { name: 'EVENT', key: 'event' },
     { name: 'SPONSORS', key: 'sponsors' },
     { name: 'PROBLEM STATEMENTS', key: 'problem-statements', protected: true },
@@ -70,7 +97,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
               fontFamily: 'monospace',
               textShadow: '0 0 10px #00FFFF',
             }}
-            onClick={() => setCurrentPage('home')}
+            onClick={() => handleNavigation('home')}
             whileHover={{ scale: 1.05 }}
           >
             INFERNO VERSE
@@ -81,13 +108,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             {navItems.map((item) => (
               <motion.button
                 key={item.key}
-                onClick={() => {
-                  if (item.protected && !user) {
-                    setCurrentPage('auth');
-                  } else {
-                    setCurrentPage(item.key);
-                  }
-                }}
+                onClick={() => handleNavigation(item.key, item.protected)}
                 className={`text-sm font-medium transition-colors ${currentPage === item.key
                     ? 'text-cyan-400'
                     : 'text-gray-300 hover:text-cyan-400'
@@ -108,7 +129,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             </div>
 
             {/* Profile/Auth */}
-            <div className="relative">
+            <div className="relative profile-dropdown">
               {user ? (
                 <div>
                   <motion.button
@@ -136,7 +157,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                       <div className="text-cyan-400 font-medium">{user.displayName}</div>
                       <div className="text-gray-300 text-sm">{user.email}</div>
                       <button
-                        onClick={() => setCurrentPage('registration')}
+                        onClick={() => handleNavigation('registration')}
                         className="w-full mt-2 px-4 py-2 bg-cyan-400/20 text-cyan-400 rounded hover:bg-cyan-400/30 transition-colors"
                       >
                         Register Now
@@ -153,7 +174,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                 </div>
               ) : (
                 <motion.button
-                  onClick={() => setCurrentPage('auth')}
+                  onClick={() => handleNavigation('auth')}
                   className="px-4 py-2 bg-cyan-400/20 text-cyan-400 rounded-lg hover:bg-cyan-400/30 transition-colors"
                   whileHover={{ scale: 1.05 }}
                 >
@@ -177,19 +198,13 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
           <motion.nav
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
             className="lg:hidden mt-4 pt-4 border-t border-cyan-400/20"
           >
             {navItems.map((item) => (
               <button
                 key={item.key}
-                onClick={() => {
-                  if (item.protected && !user) {
-                    setCurrentPage('auth');
-                  } else {
-                    setCurrentPage(item.key);
-                  }
-                  setMobileMenuOpen(false);
-                }}
+                onClick={() => handleNavigation(item.key, item.protected)}
                 className={`block w-full text-left py-2 text-sm font-medium transition-colors ${currentPage === item.key
                     ? 'text-cyan-400'
                     : 'text-gray-300 hover:text-cyan-400'

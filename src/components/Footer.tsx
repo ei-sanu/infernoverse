@@ -1,7 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  setCurrentPage: (page: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
+  const quickLinks = [
+    { name: 'Home', key: 'home' },
+    { name: 'About', key: 'about' },
+    { name: 'Event', key: 'event' },
+    { name: 'Sponsors', key: 'sponsors' },
+    { name: 'Terms', key: 'terms' },
+    { name: 'Conditions', key: 'conditions' },
+  ];
+
   return (
     <footer className="bg-slate-900 border-t border-cyan-400/20 py-12">
       <div className="container mx-auto px-4">
@@ -9,11 +22,13 @@ const Footer: React.FC = () => {
           {/* Logo and Description */}
           <div className="md:col-span-2">
             <motion.div
-              className="text-2xl font-bold text-cyan-400 mb-4"
+              className="text-2xl font-bold text-cyan-400 mb-4 cursor-pointer"
               style={{
                 fontFamily: 'monospace',
                 textShadow: '0 0 10px #00FFFF',
               }}
+              onClick={() => setCurrentPage('home')}
+              whileHover={{ scale: 1.05 }}
             >
               INFERNO VERSE
             </motion.div>
@@ -30,10 +45,16 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-cyan-400 font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#home" className="hover:text-cyan-400 transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-cyan-400 transition-colors">About</a></li>
-              <li><a href="#event" className="hover:text-cyan-400 transition-colors">Event</a></li>
-              <li><a href="#sponsors" className="hover:text-cyan-400 transition-colors">Sponsors</a></li>
+              {quickLinks.map((link) => (
+                <li key={link.key}>
+                  <button
+                    onClick={() => setCurrentPage(link.key)}
+                    className="hover:text-cyan-400 transition-colors text-left"
+                  >
+                    {link.name}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
