@@ -17,15 +17,14 @@ const Team: React.FC = () => {
       }
     },
     {
-      name: 'Sarah Wilson',
-      role: 'Technical Lead',
+      name: 'Vinay Kothari',
+      role: 'Co-Ceo',
       image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
       bio: 'Full-stack developer and AI researcher passionate about education',
       social: {
-        linkedin: '#',
-        twitter: '#',
-        github: '#',
-        email: 'sarah@infernoverse.com'
+        linkedin: 'https://www.linkedin.com/in/vinay-k-929b71347?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+        github: 'https://github.com/VINAY-KOTHARI-10',
+        email: 'infernoofficial694@gmail.com'
       }
     },
     {
