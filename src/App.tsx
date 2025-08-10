@@ -97,7 +97,7 @@ const App: React.FC = () => {
       case 'contact':
         return <Contact setCurrentPage={handlePageChange} />;
       case 'team':
-        return <Team />;
+        return <Team setCurrentPage={setCurrentPage} />;
       case 'privacy':
         return <PrivacyPolicy onBack={() => handlePageChange('home')} />;
       case 'terms':

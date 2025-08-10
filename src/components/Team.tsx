@@ -2,7 +2,12 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import React from 'react';
 
-const Team: React.FC = () => {
+// First, update the component props to include setCurrentPage
+interface TeamProps {
+  setCurrentPage: (page: string) => void;
+}
+
+const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
   const organizers = [
     {
       name: 'Shivansh Singh',
@@ -47,7 +52,7 @@ const Team: React.FC = () => {
         linkedin: 'www.linkedin.com/in/somesh-biswal-b73576320',
         github: 'https://github.com/ei-sanu',
         email: 'someshranjanbiswal13678@gmail.com'
-        
+
       }
     },
     {
@@ -61,7 +66,7 @@ const Team: React.FC = () => {
       }
     },
     {
-      name: 'Kushagra Bajpeir',
+      name: 'Kushagra Bajpei',
       role: 'Tech Member',
       image: 'kushu.png',
       bio: 'Passionate tech enthusiast driven by innovation, problem-solving, and building impactful digital solutions.',
@@ -317,8 +322,8 @@ const Team: React.FC = () => {
             Whether you're interested in organizing, mentoring, or volunteering, we'd love to hear from you!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
             <motion.button
+              onClick={() => setCurrentPage('contact')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 border border-cyan-400 text-cyan-400 font-semibold rounded-lg hover:bg-cyan-400/10 transition-colors"

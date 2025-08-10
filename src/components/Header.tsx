@@ -163,7 +163,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             <img
               src="/infernoedit.png"
               alt="INFERNO VERSE"
-              className="h-10 w-24 object-contain" // Adjusted size for better fit
+              className="h-12 w-32 object-contain sm:h-14 sm:w-36" // Increased base and responsive sizes
               style={{
                 filter: 'drop-shadow(0 0 10px rgba(0, 240, 255, 0.5))'
               }}
