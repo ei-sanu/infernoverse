@@ -62,7 +62,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
     //   logo: 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png',
     // },
     {
-      category: 'SUPPORTED BY',
+      category: 'KNOWLEDGE PARTNER',
       name: 'Hi Devs',
       logo: '/hidevesedit.png',
     },
