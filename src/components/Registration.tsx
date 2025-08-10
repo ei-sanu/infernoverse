@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Download, Copy, Check } from 'lucide-react';
+import { ArrowLeft, Check, Copy, Download } from 'lucide-react';
 import QRCode from 'qrcode';
-import html2canvas from 'html2canvas';
+import React, { useState } from 'react';
 
 interface RegistrationProps {
   onBack: () => void;
@@ -35,16 +34,20 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
   const [qrCodeUrl, setQrCodeUrl] = useState('');
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [teamSize, setTeamSize] = useState('solo');
+  const [amount, setAmount] = useState(99);
 
-  const upiId = '7008450074@yesg';
+  const upiId = 'shivanshsky0808-1@oksbi';
 
   React.useEffect(() => {
     generateQRCode();
-  }, []);
+  }, [amount]); // Add amount as a dependency
 
   const generateQRCode = async () => {
     try {
-      const url = await QRCode.toDataURL(`upi://pay?pa=${upiId}&pn=Inferno Verse&am=500&cu=INR`);
+      const url = await QRCode.toDataURL(
+        `upi://pay?pa=${upiId}&pn=Inferno Verse&am=${amount}&cu=INR`
+      );
       setQrCodeUrl(url);
     } catch (error) {
       console.error('Error generating QR code:', error);
@@ -71,6 +74,27 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  // Update the handleTeamSizeChange function to include QR regeneration
+  const handleTeamSizeChange = (size: string) => {
+    setTeamSize(size);
+    let newAmount = 99;
+    switch (size) {
+      case 'solo':
+        newAmount = 99;
+        break;
+      case 'duo':
+        newAmount = 199;
+        break;
+      case 'trio':
+        newAmount = 299;
+        break;
+      case 'quartet':
+        newAmount = 399;
+        break;
+    }
+    setAmount(newAmount);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -375,7 +399,26 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
 
                 <div className="bg-slate-700/30 rounded-xl p-6 mb-6">
                   <div className="text-center mb-4">
-                    <h4 className="text-lg font-semibold text-cyan-400 mb-2">Registration Fee: ₹500</h4>
+                    {/* Add Team Size Selector */}
+                    <div className="mb-4">
+                      <label className="block text-gray-300 text-sm font-medium mb-2">
+                        Select Team Size
+                      </label>
+                      <select
+                        value={teamSize}
+                        onChange={(e) => handleTeamSizeChange(e.target.value)}
+                        className="px-4 py-2 bg-slate-700/50 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
+                      >
+                        <option value="solo">Solo (₹99)</option>
+                        <option value="duo">Duo (₹199)</option>
+                        <option value="trio">Trio (₹299)</option>
+                        <option value="quartet">Quartet (₹399)</option>
+                      </select>
+                    </div>
+
+                    <h4 className="text-lg font-semibold text-cyan-400 mb-2">
+                      Registration Fee: ₹{amount}
+                    </h4>
                     <p className="text-gray-300">Scan QR Code or Use UPI ID to pay</p>
                   </div>
 
@@ -384,7 +427,11 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
                     <div className="text-center">
                       {qrCodeUrl && (
                         <div id="qr-code" className="mb-4">
-                          <img src={qrCodeUrl} alt="Payment QR Code" className="w-48 h-48 mx-auto border-2 border-cyan-400 rounded-lg" />
+                          <img
+                            src={qrCodeUrl}
+                            alt="Payment QR Code"
+                            className="w-48 h-48 mx-auto border-2 border-cyan-400 rounded-lg"
+                          />
                         </div>
                       )}
                       <motion.button

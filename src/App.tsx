@@ -1,5 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
+import AttendanceMark from './components/AttendanceMark';
+import AttendanceWait from './components/AttendanceWait';
 import Auth from './components/Auth';
 import Contact from './components/Contact';
 import DiscloseProblems from './components/DiscloseProblems';
@@ -26,6 +28,7 @@ const App: React.FC = () => {
     return path;
   });
   const [showLoader, setShowLoader] = useState(true);
+  const attendanceStarted = false;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -101,6 +104,13 @@ const App: React.FC = () => {
         return <TermsConditions onBack={() => handlePageChange('home')} />;
       case 'refund':
         return <RefundPolicy />;
+      case 'attendance':
+        const attendanceStarted = false;
+        return attendanceStarted ? (
+          <AttendanceMark onBack={() => handlePageChange('home')} />
+        ) : (
+          <AttendanceWait onBack={() => handlePageChange('home')} />
+        );
       default:
         return <Home setCurrentPage={handlePageChange} user={user} />;
     }

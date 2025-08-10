@@ -64,7 +64,12 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
     {
       category: 'SUPPORTED BY',
       name: 'Hi Devs',
-      logo: '/api/placeholder/150/150',
+      logo: '/hidevesedit.png',
+    },
+    {
+      category: 'SUPPORTED BY',
+      name: 'DSO LPU',
+      logo: '/dsologo.png',
     },
   ];
 
@@ -143,41 +148,43 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
           </div>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.5 }}
           >
+            {/* Register Now Button - Primary */}
             <motion.button
-              onClick={() => user ? setCurrentPage('registration') : setCurrentPage('auth')}
-              whileHover={{
-                scale: 1.05,
-                textShadow: "0 0 8px rgb(0,240,255)",
-                boxShadow: "0 0 15px rgb(0,240,255)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="button-glow px-8 py-4 bg-[#00f0ff] text-black font-orbitron font-black text-lg rounded-lg
-              hover:bg-[#00d8e6] transition-all duration-300 tracking-wider relative overflow-hidden
-              before:absolute before:inset-0 before:bg-white/20 before:translate-x-[-100%] hover:before:translate-x-[100%]
-              before:transition-transform before:duration-500"
+              onClick={() => setCurrentPage('registration')}
+              className="px-8 py-4 bg-purple-600 text-white rounded-lg font-bold text-lg hover:bg-purple-500 transition-colors w-full sm:w-auto"
+              whileHover={{ scale: 1.05 }}
             >
               REGISTER NOW
             </motion.button>
 
+            {/* Problem Statements Button - Secondary */}
             <motion.button
-              onClick={() => user ? setCurrentPage('problem-statements') : setCurrentPage('auth')}
-              whileHover={{
-                scale: 1.05,
-                textShadow: "0 0 8px rgb(0,240,255)",
-                boxShadow: "0 0 15px rgb(0,240,255)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="text-glow px-8 py-4 border-2 border-[#00f0ff] text-[#00f0ff] font-orbitron font-bold
-              text-lg rounded-lg hover:bg-[#00f0ff]/10 transition-all duration-300 tracking-wider relative
-              overflow-hidden before:absolute before:inset-0 before:bg-[#00f0ff]/10 before:translate-x-[-100%]
-              hover:before:translate-x-[100%] before:transition-transform before:duration-500"
+              onClick={() => setCurrentPage('problem-statements')}
+              className="px-8 py-4 bg-purple-600/20 text-purple-400 rounded-lg font-bold text-lg hover:bg-purple-600/30 transition-colors w-full sm:w-auto"
+              whileHover={{ scale: 1.05 }}
             >
               PROBLEM STATEMENTS
+            </motion.button>
+          </motion.div>
+
+          {/* Attendance Button - Secondary, Separated */}
+          <motion.div
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
+          >
+            <motion.button
+              onClick={() => setCurrentPage('attendance')}
+              className="px-8 py-4 bg-cyan-400/20 text-cyan-400 rounded-lg font-bold text-lg hover:bg-cyan-400/30 transition-colors w-full sm:w-auto max-w-md"
+              whileHover={{ scale: 1.05 }}
+            >
+              MARK ATTENDANCE
             </motion.button>
           </motion.div>
         </motion.div>
@@ -413,7 +420,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name}
-                    className="w-32 h-32 mx-auto mb-4 object-contain"
+                    className="w-32 h-56 mx-auto mb-4 object-contain"
                   />
                   <div className="text-white font-semibold text-lg">{sponsor.name}</div>
                 </div>
