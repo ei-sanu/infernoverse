@@ -65,12 +65,12 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
   };
 
   const navItems = [
-    { name: 'HOME', key: 'home' },
-    { name: 'EVENT', key: 'event' },
-    { name: 'SPONSORS', key: 'sponsors' },
-    { name: 'PROBLEM STATEMENTS', key: 'problem-statements', protected: true },
-    { name: 'CONTACT', key: 'contact' },
-    { name: 'TEAM', key: 'team' },
+    { name: 'HOME', key: 'home', href: '/' },
+    { name: 'EVENT', key: 'event', href: '/event' },
+    { name: 'SPONSORS', key: 'sponsors', href: '/sponsors' },
+    { name: 'PROBLEM STATEMENTS', key: 'problem-statements', href: '/problem-statements', protected: true },
+    { name: 'CONTACT', key: 'contact', href: '/contact' },
+    { name: 'TEAM', key: 'team', href: '/team' },
   ];
 
   const formatTime = (date: Date) => {
@@ -101,35 +101,42 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
       animate={{ y: 0 }}
       className="fixed top-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-cyan-400/20"
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-2"> {/* Changed py-4 to py-2 */}
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div
-            className="text-2xl font-bold text-cyan-400 cursor-pointer"
-            style={{
-              fontFamily: 'monospace',
-              textShadow: '0 0 10px #00FFFF',
-            }}
+            className="cursor-pointer flex items-center"
             onClick={() => setCurrentPage('home')}
             whileHover={{ scale: 1.05 }}
           >
-            INFERNO VERSE
+            <img
+              src="/infernoedit.png"
+              alt="INFERNO VERSE"
+              className="h-12 w-24 object-contain" // Adjusted size for better fit
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(0, 240, 255, 0.5))'
+              }}
+            />
           </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.button
+              <motion.a
                 key={item.key}
-                onClick={() => handleNavigation(item)}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigation(item);
+                }}
                 className={`text-sm font-medium transition-colors ${currentPage === item.key
-                    ? 'text-cyan-400'
-                    : 'text-gray-300 hover:text-cyan-400'
+                  ? 'text-cyan-400'
+                  : 'text-gray-300 hover:text-cyan-400'
                   }`}
                 whileHover={{ scale: 1.05 }}
               >
                 {item.name}
-              </motion.button>
+              </motion.a>
             ))}
           </nav>
 
@@ -255,12 +262,16 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
                     className="absolute top-full right-0 mt-2 w-48 bg-slate-800/95 backdrop-blur-md
-                             border border-cyan-400/20 rounded-lg shadow-xl z-50"
+                              border border-cyan-400/20 rounded-lg shadow-xl z-50"
                   >
                     {navItems.map((item) => (
-                      <motion.button
+                      <motion.a
                         key={item.key}
-                        onClick={() => handleNavigation(item)}
+                        href={item.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavigation(item);
+                        }}
                         className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors
                           ${currentPage === item.key
                             ? 'text-cyan-400 bg-cyan-400/10'
@@ -269,7 +280,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                         whileHover={{ x: 4 }}
                       >
                         {item.name}
-                      </motion.button>
+                      </motion.a>
                     ))}
                   </motion.nav>
                 )}

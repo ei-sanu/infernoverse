@@ -1,38 +1,35 @@
 import React, { useEffect, useState } from 'react';
 
 const CountdownTimer: React.FC = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 44,
-    hours: 11,
-    minutes: 15,
-    seconds: 54
-  });
+  const calculateTimeLeft = () => {
+    // Set your target date here (Year, Month (0-11), Day, Hour, Minute, Second)
+    const targetDate = new Date(2025, 8, 20, 0, 0, 0); // August 20, 2025, 10:00 AM
+    const now = new Date();
+    const difference = targetDate.getTime() - now.getTime();
+
+    // Return all zeros if we're past the target date
+    if (difference <= 0) {
+      return {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+      };
+    }
+
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60)
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        const newTime = {
-          days: prev.days,
-          hours: prev.hours,
-          minutes: prev.minutes,
-          seconds: prev.seconds - 1
-        };
-
-        if (newTime.seconds < 0) {
-          newTime.seconds = 59;
-          newTime.minutes -= 1;
-        }
-        if (newTime.minutes < 0) {
-          newTime.minutes = 59;
-          newTime.hours -= 1;
-        }
-        if (newTime.hours < 0) {
-          newTime.hours = 23;
-          newTime.days -= 1;
-        }
-
-        return newTime;
-      });
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);

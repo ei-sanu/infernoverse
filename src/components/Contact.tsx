@@ -60,13 +60,13 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      details: 'info@infernoverse.com',
+      details: 'infernoofficial694@gmail.com',
       description: 'For general inquiries and support'
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: '+91 98765 43210',
+      details: '+91 62878 30296',
       description: 'Available 9 AM - 6 PM IST'
     },
     {
@@ -81,20 +81,21 @@ const Contact: React.FC = () => {
     {
       name: 'Organizer Team',
       role: 'Event Organization',
-      email: 'organizers@infernoverse.com',
-      phone: '+91 98765 43211'
+      email: 'infernoofficial694@gmail.com',
+      phone: '+91 62878 30296'
     },
     {
       name: 'Technical Team',
       role: 'Technical Support',
-      email: 'tech@infernoverse.com',
-      phone: '+91 98765 43212'
+      email: 'someshranjanbiswal13678@gmail.com',
+      phone: '+91 7008450074'
     },
+
     {
       name: 'Sponsorship Team',
       role: 'Partnerships & Sponsorship',
-      email: 'sponsors@infernoverse.com',
-      phone: '+91 98765 43213'
+      email: 'infernoofficial694@gmail.com',
+      phone: '+91 62878 30296'
     }
   ];
 
@@ -109,7 +110,7 @@ const Contact: React.FC = () => {
     },
     {
       question: 'Can I participate individually?',
-      answer: 'Teams must have 2-4 members. Individual participants will be matched with other individuals.'
+      answer: 'Teams must have 2-4 members. Individual participants .'
     },
     {
       question: 'What should I bring to the event?',

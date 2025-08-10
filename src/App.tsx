@@ -19,6 +19,7 @@ import { useAuth } from './hooks/useAuth';
 
 const App: React.FC = () => {
   const { user, loading } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(() => {
     // Get initial page from URL path or default to home
     const path = window.location.pathname.substring(1) || 'home';
@@ -55,6 +56,7 @@ const App: React.FC = () => {
     const path = page === 'home' ? '/' : `/${page}`;
     window.history.pushState({ page }, '', path);
     setCurrentPage(page);
+    setIsMenuOpen(false); // Close menu when page changes
   };
 
   if (loading || showLoader) {
@@ -81,7 +83,7 @@ const App: React.FC = () => {
       case 'event':
         return <Event />;
       case 'problem-statements':
-        const hackathonStarted = true;
+        const hackathonStarted = false;
         return hackathonStarted ? (
           <ProblemStatements onBack={() => handlePageChange('home')} />
         ) : (
@@ -110,7 +112,12 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-slate-900 text-white flex flex-col">
       <AnimatePresence mode="wait">
         {shouldShowHeaderFooter && (
-          <Header currentPage={currentPage} setCurrentPage={handlePageChange} />
+          <Header
+            currentPage={currentPage}
+            setCurrentPage={handlePageChange}
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
         )}
 
         <motion.main

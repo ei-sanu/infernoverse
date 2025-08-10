@@ -1,79 +1,73 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import React from 'react';
 
 const Team: React.FC = () => {
   const organizers = [
     {
-      name: 'John Doe',
+      name: 'Shivansh Singh',
       role: 'Event Director',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
+      image: 'shivansh.jpeg',
       bio: 'Leading tech innovator with 8+ years in AI and hackathon organization',
       social: {
-        linkedin: '#',
-        twitter: '#',
-        github: '#',
-        email: 'john@infernoverse.com'
+        linkedin: 'https://www.linkedin.com/in/shivansh-singh-08july2005?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+
       }
     },
+    // {
+    //   name: 'Sarah Wilson',
+    //   role: 'Technical Lead',
+    //   image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
+    //   bio: 'Full-stack developer and AI researcher passionate about education',
+    //   social: {
+    //     linkedin: '#',
+    //     twitter: '#',
+    //     github: '#',
+    //     email: 'sarah@infernoverse.com'
+    //   }
+    // },
     {
-      name: 'Sarah Wilson',
-      role: 'Technical Lead',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
-      bio: 'Full-stack developer and AI researcher passionate about education',
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        github: '#',
-        email: 'sarah@infernoverse.com'
-      }
-    },
-    {
-      name: 'Mike Chen',
+      name: 'Vinay Kothari',
       role: 'Operations Manager',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
+      image: 'vinay.jpeg',
       bio: 'Event management expert with focus on tech conferences and hackathons',
       social: {
-        linkedin: '#',
-        twitter: '#',
-        github: '#',
-        email: 'mike@infernoverse.com'
+        linkedin: 'https://www.linkedin.com/in/vinay-k-929b71347?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       }
     }
   ];
 
   const technicalTeam = [
     {
-      name: 'Alex Rodriguez',
-      role: 'Platform Developer',
+      name: 'Somesh Ranjan Biswal',
+      role: 'Platform Developer and Technical Head',
       image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
-      bio: 'Backend specialist ensuring smooth platform operations',
+      bio: 'Developer with expertise in building scalable hackathon platforms, specializing in real-time collaboration tools',
       social: {
-        linkedin: '#',
-        github: '#',
-        email: 'alex@infernoverse.com'
+        linkedin: 'www.linkedin.com/in/somesh-biswal-b73576320',
+        github: 'https://github.com/ei-sanu',
+        email: 'someshranjanbiswal13678@gmail.com'
+
       }
     },
     {
-      name: 'Emily Zhang',
-      role: 'UI/UX Designer',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
-      bio: 'Creative designer crafting beautiful user experiences',
+      name: 'Vishwajeet survase',
+      role: 'Tech Member',
+      image: 'vishwajeet.jpeg',
+      bio: 'AI ML enthusiast with a passion for building innovative solutions',
       social: {
-        linkedin: '#',
-        twitter: '#',
-        email: 'emily@infernoverse.com'
+        linkedin: 'https://www.linkedin.com/in/shivansh-singh-08july2005?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+
       }
     },
     {
-      name: 'David Kumar',
-      role: 'DevOps Engineer',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
-      bio: 'Infrastructure expert managing cloud services and deployment',
+      name: 'Kushagra Bajpeir',
+      role: 'Tech Member',
+      image: 'kushu.png',
+      bio: 'Passionate tech enthusiast driven by innovation, problem-solving, and building impactful digital solutions.',
       social: {
-        linkedin: '#',
-        github: '#',
-        email: 'david@infernoverse.com'
+        linkedin: 'https://www.linkedin.com/in/kushagra-bajpei-248583316',
+
       }
     }
   ];
@@ -186,28 +180,30 @@ const Team: React.FC = () => {
           className="mb-16"
         >
           <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">CORE ORGANIZERS</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {organizers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-cyan-400/20"
-                />
-                <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-                <p className="text-cyan-400 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-300 text-sm leading-relaxed">{member.bio}</p>
-                {renderSocialLinks(member.social)}
-              </motion.div>
-            ))}
+          <div className="flex justify-center"> {/* Added flex container for centering */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl"> {/* Changed to 2 columns and added max width */}
+              {organizers.map((member, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
+                >
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-cyan-400/20"
+                  />
+                  <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                  <p className="text-cyan-400 font-medium mb-3">{member.role}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed flex justify-center">{member.bio}</p>
+                  {renderSocialLinks(member.social)}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -321,7 +317,7 @@ const Team: React.FC = () => {
             Whether you're interested in organizing, mentoring, or volunteering, we'd love to hear from you!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

@@ -114,27 +114,27 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
               <div className="flex items-center space-x-2">
                 <span>📧</span>
                 <a
-                  href="mailto:info@infernoverse.com"
+                  href="mailto:infernoofficial694@gmail.com"
                   className="hover:text-cyan-400 transition-colors"
                 >
-                  info@infernoverse.com
+                  infernoofficial694@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-2">
                 <span>📱</span>
-                <a href="tel:+919876543210" className="hover:text-cyan-400 transition-colors">
-                  +91 98765 43210
+                <a href="tel:+916287830296" className="hover:text-cyan-400 transition-colors">
+                  +91 62878 30296
                 </a>
               </div>
               <div className="flex items-center space-x-2">
                 <span>🌐</span>
                 <a
-                  href="https://www.infernoverse.com"
+                  href="https://www.somesh.social/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-cyan-400 transition-colors"
                 >
-                  www.infernoverse.com
+                  somesh.social
                 </a>
               </div>
             </div>
@@ -151,7 +151,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
         >
           <p className="font-orbitron text-sm tracking-wider text-gray-400 flex items-center justify-center gap-2 flex-wrap">
             <span
-              className="inline-flex items-center transform hover:scale-105 transition-transform duration-300 font-bold"
+              className="inline-flex items-center transform hover:scale-105 transition-transform duration-300 font-extrabold" // Changed from font-bold to font-extrabold
               style={{
                 textShadow: '0 0 5px rgba(0, 240, 255, 0.5), 0 0 10px rgba(0, 240, 255, 0.3)',
                 letterSpacing: '0.1em'
@@ -161,13 +161,13 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
             </span>
             <span className="text-cyan-400/50">|</span>
             <span
-              className="inline-flex items-center transform hover:scale-105 transition-transform duration-300 font-bold"
+              className="inline-flex items-center transform hover:scale-105 transition-transform duration-300 font-extrabold" // Changed from font-bold to font-extrabold
               style={{
                 textShadow: '0 0 5px rgba(0, 240, 255, 0.5), 0 0 10px rgba(0, 240, 255, 0.3)',
                 letterSpacing: '0.1em'
               }}
             >
-              ORGANIZED BY INFERNO VERSE
+              ORGANIZED BY INFERNO
             </span>
             <span className="text-cyan-400/50">|</span>
             <button
