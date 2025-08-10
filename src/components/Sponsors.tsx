@@ -18,12 +18,18 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
 
   const supportingSponsors = [
     {
-      name: 'Hi Devs',
+      name: 'HIdevs',
       logo: '/hidevesedit.png',
-
       description: 'Community platform connecting developers worldwide',
       website: 'https://app.hidevs.xyz/',
-      category: 'Community Partner'
+      category: 'KNOWLEDGE PARTNER'
+    },
+    {
+      name: 'DSO LPU',
+      logo: '/dsologo.png', // Add your DSO LPU logo to public folder
+      description: 'Department of Student Organization, Lovely Professional University',
+      website: 'https://www.lpu.in/', // Update with correct DSO website
+      category: 'SUPPORTED BY'
     }
   ];
 
@@ -147,7 +153,7 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
         >
           <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">SUPPORTED BY</h2>
 
-          <div className="flex justify-center items-center"> {/* Changed from grid to flex with center alignment */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"> {/* Changed to grid layout */}
             {supportingSponsors.map((sponsor, index) => (
               <motion.div
                 key={index}
@@ -156,20 +162,22 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center max-w-md w-full" // Added max-w-md and w-full
+                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
               >
                 <img
                   src={sponsor.logo}
                   alt={sponsor.name}
-                  className="w-full h-32 mx-auto mb-4 object-contain"
+                  className="h-32 mx-auto mb-4 object-contain"
                 />
                 <h3 className="text-xl font-bold text-white mb-2">{sponsor.name}</h3>
                 <p className="text-cyan-400 text-sm mb-3">{sponsor.category}</p>
                 <p className="text-gray-300 text-sm mb-4">{sponsor.description}</p>
                 <a
                   href={sponsor.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block px-4 py-2 bg-cyan-400/20 text-cyan-400 text-sm rounded-lg
-    hover:bg-cyan-400/30 transition-colors w-full text-center mx-auto max-w-[200px]"
+            hover:bg-cyan-400/30 transition-colors w-full text-center mx-auto max-w-[200px]"
                 >
                   Learn More
                 </a>

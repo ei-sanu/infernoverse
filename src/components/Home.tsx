@@ -156,7 +156,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             {/* Register Now Button - Primary */}
             <motion.button
               onClick={() => setCurrentPage('registration')}
-              className="px-8 py-4 bg-purple-600 text-white rounded-lg font-bold text-lg hover:bg-purple-500 transition-colors w-full sm:w-auto"
+              className="px-8 py-4 bg-cyan-400 text-slate-900 rounded-lg font-bold text-lg hover:bg-cyan-300 transition-colors w-full sm:w-auto"
               whileHover={{ scale: 1.05 }}
             >
               REGISTER NOW
@@ -165,7 +165,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             {/* Problem Statements Button - Secondary */}
             <motion.button
               onClick={() => setCurrentPage('problem-statements')}
-              className="px-8 py-4 bg-purple-600/20 text-purple-400 rounded-lg font-bold text-lg hover:bg-purple-600/30 transition-colors w-full sm:w-auto"
+              className="px-8 py-4 bg-cyan-400/20 text-cyan-400 rounded-lg font-bold text-lg hover:bg-cyan-400/30 transition-colors w-full sm:w-auto"
               whileHover={{ scale: 1.05 }}
             >
               PROBLEM STATEMENTS

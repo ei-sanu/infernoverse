@@ -8,7 +8,7 @@ const Team: React.FC = () => {
       name: 'Shivansh Singh',
       role: 'Event Director',
       image: 'shivansh.jpeg',
-      bio: 'Leading tech innovator with 8+ years in AI and hackathon organization',
+      bio: 'Leads the vision and execution of the hackathon, ensuring every detail aligns with the event’s goals. Coordinates teams, schedules, and resources to deliver an engaging and impactful experience for all participants.',
       social: {
         linkedin: 'https://www.linkedin.com/in/shivansh-singh-08july2005?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
 
@@ -41,13 +41,13 @@ const Team: React.FC = () => {
     {
       name: 'Somesh Ranjan Biswal',
       role: 'Platform Developer and Technical Head',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
+      image: '/sanu.png',
       bio: 'Developer with expertise in building scalable hackathon platforms, specializing in real-time collaboration tools',
       social: {
         linkedin: 'www.linkedin.com/in/somesh-biswal-b73576320',
         github: 'https://github.com/ei-sanu',
         email: 'someshranjanbiswal13678@gmail.com'
-
+        
       }
     },
     {
