@@ -31,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
             {/* Social Media Icons */}
             <div className="flex space-x-4">
               <motion.a
-                href="https://linkedin.com/company/infernoverse"
+                href="https://www.linkedin.com/company/inferno-org/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
                 <i className="fab fa-linkedin text-2xl" style={{ textShadow: '0 0 10px #00f0ff' }}></i>
               </motion.a>
               <motion.a
-                href="https://instagram.com/infernoverse"
+                href="https://www.instagram.com/infernoofficial8?igsh=dXdhcWh0cjJlMTB4"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
