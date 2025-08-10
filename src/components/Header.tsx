@@ -54,6 +54,28 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     return () => clearInterval(timer);
   }, []);
 
+  // Add useEffect near the top of the component
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setMobileMenuOpen(false);
+    };
+
+    // Close menu on page/route changes
+    handleRouteChange();
+
+    // Add event listeners
+    window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener('scroll', handleRouteChange);
+    window.addEventListener('resize', handleRouteChange);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener('scroll', handleRouteChange);
+      window.removeEventListener('resize', handleRouteChange);
+    };
+  }, [currentPage]); // Add currentPage as dependency
+
   const handleSignOut = async () => {
     try {
       await signOut(auth);
@@ -85,15 +107,44 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     });
   };
 
+  // Update the handleNavigation function to ensure menu closes
   const handleNavigation = (item: { key: string; protected: boolean }) => {
-    if (item.protected && !user) {
-      setCurrentPage('auth');
-    } else {
-      setCurrentPage(item.key);
-    }
-    // Immediately close mobile menu
+    // Force close all menus
     setMobileMenuOpen(false);
+    setShowProfile(false);
+
+    // Handle navigation after a small delay to ensure menu closes
+    setTimeout(() => {
+      if (item.protected && !user) {
+        setCurrentPage('auth');
+      } else {
+        setCurrentPage(item.key);
+      }
+    }, 100);
   };
+
+  // Add this effect to handle menu state
+  useEffect(() => {
+    const handleCleanup = () => {
+      setMobileMenuOpen(false);
+      setShowProfile(false);
+    };
+
+    // Close menus when currentPage changes
+    handleCleanup();
+
+    // Add event listeners
+    document.addEventListener('scroll', handleCleanup);
+    window.addEventListener('resize', handleCleanup);
+    window.addEventListener('popstate', handleCleanup);
+
+    // Cleanup function
+    return () => {
+      document.removeEventListener('scroll', handleCleanup);
+      window.removeEventListener('resize', handleCleanup);
+      window.removeEventListener('popstate', handleCleanup);
+    };
+  }, [currentPage]);
 
   return (
     <motion.header
@@ -112,7 +163,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             <img
               src="/infernoedit.png"
               alt="INFERNO VERSE"
-              className="h-12 w-24 object-contain" // Adjusted size for better fit
+              className="h-10 w-24 object-contain" // Adjusted size for better fit
               style={{
                 filter: 'drop-shadow(0 0 10px rgba(0, 240, 255, 0.5))'
               }}
@@ -254,35 +305,43 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
               </motion.button>
 
               {/* Mobile Navigation */}
-              <AnimatePresence>
+              <AnimatePresence mode="wait">
                 {mobileMenuOpen && (
-                  <motion.nav
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full right-0 mt-2 w-48 bg-slate-800/95 backdrop-blur-md
-                              border border-cyan-400/20 rounded-lg shadow-xl z-50"
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 bg-slate-900/90 backdrop-blur-sm z-40"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
-                    {navItems.map((item) => (
-                      <motion.a
-                        key={item.key}
-                        href={item.href}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleNavigation(item);
-                        }}
-                        className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors
-                          ${currentPage === item.key
-                            ? 'text-cyan-400 bg-cyan-400/10'
-                            : 'text-gray-300 hover:text-cyan-400 hover:bg-cyan-400/5'
-                          }`}
-                        whileHover={{ x: 4 }}
-                      >
-                        {item.name}
-                      </motion.a>
-                    ))}
-                  </motion.nav>
+                    <motion.nav
+                      initial={{ x: '100%' }}
+                      animate={{ x: 0 }}
+                      exit={{ x: '100%' }}
+                      transition={{ type: 'tween' }}
+                      className="absolute top-16 right-4 w-48 bg-slate-800 border border-cyan-400/20 rounded-lg shadow-xl"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {navItems.map((item) => (
+                        <a
+                          key={item.key}
+                          href={item.href}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleNavigation(item);
+                          }}
+                          className={`block w-full text-left px-4 py-3 text-sm font-medium transition-colors
+                            ${currentPage === item.key
+                              ? 'text-cyan-400 bg-cyan-400/10'
+                              : 'text-gray-300 hover:text-cyan-400 hover:bg-cyan-400/5'
+                            }`}
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </motion.nav>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>
