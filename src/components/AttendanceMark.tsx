@@ -7,7 +7,7 @@ interface AttendanceMarkProps {
 
 const AttendanceMark: React.FC<AttendanceMarkProps> = ({ onBack }) => {
     const handleAttendanceClick = () => {
-        window.open('https://infernoverseattendance.vercel.app/', '_blank');
+        window.open('https://infernov.me/', '_blank');
     };
 
     return (
