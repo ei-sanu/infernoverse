@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Calendar, Clock, Code, Lightbulb, MapPin, Trophy, Users } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CountdownTimer from './CountdownTimer';
 
 interface HomeProps {
@@ -9,6 +9,9 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const eventHighlights = [
     {
       icon: Code,
@@ -85,6 +88,47 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
       }}
     />
   );
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.7, // 70% of the video must be visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && videoRef.current) {
+          videoRef.current.play();
+          videoRef.current.muted = false;
+          setIsVideoPlaying(true);
+        } else if (videoRef.current) {
+          videoRef.current.pause();
+          setIsVideoPlaying(false);
+        }
+      });
+    }, options);
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // Add this keyframe animation at the beginning of your component, after the imports
+  const glowAnimation = {
+    from: {
+      boxShadow: '0 0 10px rgba(0,240,255,0.5), 0 0 20px rgba(0,240,255,0.3)',
+      borderColor: 'rgba(0,240,255,0.6)'
+    },
+    to: {
+      boxShadow: '0 0 20px rgba(0,240,255,0.8), 0 0 40px rgba(0,240,255,0.5)',
+      borderColor: 'rgba(0,240,255,1)'
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#000000] via-[#0d0d1a] to-[#000000]">
@@ -297,14 +341,36 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-6"
+            animate={isVideoPlaying ? {
+              boxShadow: [
+                '0 0 10px rgba(0,240,255,0.5), 0 0 20px rgba(0,240,255,0.3)',
+                '0 0 20px rgba(0,240,255,0.8), 0 0 40px rgba(0,240,255,0.5)',
+                '0 0 10px rgba(0,240,255,0.5), 0 0 20px rgba(0,240,255,0.3)'
+              ],
+              borderColor: [
+                'rgba(0,240,255,0.6)',
+                'rgba(0,240,255,1)',
+                'rgba(0,240,255,0.6)'
+              ]
+            } : {}}
+            transition={{
+              duration: 0.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className={`max-w-4xl mx-auto bg-[#0d0d1a]/50 backdrop-blur-sm rounded-xl p-6 transition-all duration-500
+            ${isVideoPlaying ? 'border-2' : 'border border-[#00f0ff]/20'}`}
           >
             <div className="relative aspect-video rounded-lg overflow-hidden">
               <video
+                ref={videoRef}
                 className="w-full h-full rounded-lg"
                 controls
                 playsInline
+                loop
                 poster="/infernoedit.png"
+                onPlay={() => setIsVideoPlaying(true)}
+                onPause={() => setIsVideoPlaying(false)}
               >
                 <source src="/trailer.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
