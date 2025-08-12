@@ -34,7 +34,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     {
       name: 'Vinay Kothari',
       role: 'Operations Manager',
-      image: 'vinay.jpeg',
+      image: 'vinayf.jpeg',
       bio: 'Event management expert with focus on tech conferences and hackathons',
       social: {
         linkedin: 'https://www.linkedin.com/in/vinay-k-929b71347?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
