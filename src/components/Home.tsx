@@ -304,9 +304,6 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
                 className="w-full h-full rounded-lg"
                 controls
                 playsInline
-                autoPlay
-                muted
-                loop
                 poster="/infernoedit.png"
               >
                 <source src="/trailer.mp4" type="video/mp4" />
