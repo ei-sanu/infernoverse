@@ -281,6 +281,44 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
 
       <NeonLine />
 
+      {/* Hackathon Trailer */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-[#00f0ff] mb-8">HACKATHON TRAILER</h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-6"
+          >
+            <div className="relative aspect-video rounded-lg overflow-hidden">
+              <video
+                className="w-full h-full rounded-lg"
+                controls
+                playsInline
+                poster="/infernoedit.png"
+              >
+                <source src="/trailer.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <p className="text-[#e6e6e6] text-center mt-4 font-exo">
+              Get ready for an epic journey of innovation and creativity!
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <NeonLine />
+
       {/* Event Highlights */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
