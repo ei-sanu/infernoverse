@@ -354,7 +354,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
               ]
             } : {}}
             transition={{
-              duration: 0.5,
+              duration: 2,
               repeat: Infinity,
               ease: "easeInOut"
             }}
