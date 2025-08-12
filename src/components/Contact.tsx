@@ -106,7 +106,7 @@ const Contact: React.FC = () => {
     },
     {
       question: 'What is the registration fee?',
-      answer: 'The registration fee is ₹500 per team, payable via UPI or bank transfer.'
+      answer: 'The registration fee varies depending upon the number of participants, payable via UPI or bank transfer.'
     },
     {
       question: 'Can I participate individually?',
