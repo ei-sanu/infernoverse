@@ -91,7 +91,7 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
         newAmount = 299;
         break;
       case 'quartet':
-        newAmount = 399;
+        newAmount = 349;
         break;
     }
     setAmount(newAmount);
@@ -412,7 +412,7 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
                         <option value="solo">Solo (₹99)</option>
                         <option value="duo">Duo (₹199)</option>
                         <option value="trio">Trio (₹299)</option>
-                        <option value="quartet">Quartet (₹399)</option>
+                        <option value="quartet">Quartet (₹349)</option>
                       </select>
                     </div>
 
