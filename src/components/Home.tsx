@@ -56,13 +56,13 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
   ];
 
   const sponsors = [
-    // {
-    //   category: 'INNOVATION PARTNER',
-    //   name: 'GeeksforGeeks',
-    //   logo: 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png',
-    // },
     {
       category: 'KNOWLEDGE PARTNER',
+      name: 'GeeksforGeeks',
+      logo: 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png',
+    },
+    {
+      category: 'INNOVATION PARTNER',
       name: 'Hi Devs',
       logo: '/hidevesedit.png',
     },
@@ -70,6 +70,11 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
       category: 'SUPPORTED BY',
       name: 'DSO LPU',
       logo: '/dsologo.png',
+    },
+    {
+      category: 'COLLABORATION PARTNER',
+      name: 'GeeksforGeeks LPU Student Chapter',
+      logo: '/.png',
     },
   ];
 
@@ -472,10 +477,10 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             viewport={{ once: true }}
             className="text-center mt-12 bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-8"
           >
-            {/* <p className="font-exo text-lg text-[#e6e6e6]">
+            <p className="font-exo text-lg text-[#e6e6e6]">
               🎁 <strong className="text-[#00f0ff]">Co-powered by GeeksforGeeks</strong> -
-              Exciting goodies and certifications for winners and top 10 participants that will boost your CV!
-            </p> */}
+              Exciting goodies and certifications for winners and top 2 teams that will boost your CV!
+            </p>
           </motion.div>
         </div>
       </section>

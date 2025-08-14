@@ -45,7 +45,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
   const technicalTeam = [
     {
       name: 'Somesh Ranjan Biswal',
-      role: 'Platform Developer and Technical Head',
+      role: 'Platform Developer and Chief Technical Officer',
       image: '/sanu.png',
       bio: 'Developer with expertise in building scalable hackathon platforms, specializing in real-time collaboration tools',
       social: {

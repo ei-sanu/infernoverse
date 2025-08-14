@@ -7,22 +7,29 @@ interface SponsorsProps {
 
 const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
   const titleSponsors = [
-    // {
-    //   name: 'GeeksforGeeks',
-    //   logo: 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png',
-    //   description: 'Leading platform for computer science education and competitive programming',
-    //   website: 'https://geeksforgeeks.org',
-    //   category: 'Innovation Partner'
-    // }
+    {
+      name: 'Hi Devs',
+      logo: '/hidevesedit.png',
+      description: 'Community platform connecting developers worldwide',
+      website: 'https://app.hidevs.xyz/',
+      category: 'INNOVATION PARTNER'
+    }
   ];
 
   const supportingSponsors = [
     {
-      name: 'HIdevs',
-      logo: '/hidevesedit.png',
-      description: 'Community platform connecting developers worldwide',
-      website: 'https://app.hidevs.xyz/',
+      name: 'GeeksforGeeks',
+      logo: 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png',
+      description: 'Leading platform for computer science education and competitive programming',
+      website: 'https://geeksforgeeks.org',
       category: 'KNOWLEDGE PARTNER'
+    },
+    {
+      name: 'GeeksforGeeks LPU',
+      logo: '/gfglpu.png',
+      description: 'LPU Chapter of GeeksforGeeks fostering technical excellence and innovation',
+      website: 'https://www.geeksforgeeks.org/lpu',
+      category: 'COLLABORATION PARTNER'
     },
     {
       name: 'DSO LPU',
@@ -34,11 +41,11 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
   ];
 
   const benefits = [
-    // {
-    //   title: 'GeeksforGeeks Certifications',
-    //   description: 'Winners and top 10 participants receive official GeeksforGeeks certificates',
-    //   icon: '🏆'
-    // },
+    {
+      title: 'GeeksforGeeks Certifications',
+      description: 'Winners and top 2 teams receive official GeeksforGeeks Goodies',
+      icon: '🏆'
+    },
     {
       title: 'Exclusive Goodies',
       description: 'Premium swag kits, t-shirts, and tech accessories for winners',
@@ -151,10 +158,11 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">SUPPORTED BY</h2>
+          <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">OUR PARTNERS</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"> {/* Changed to grid layout */}
-            {supportingSponsors.map((sponsor, index) => (
+          {/* Knowledge and Collaboration Partners */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-8">
+            {supportingSponsors.slice(0, 2).map((sponsor, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -177,7 +185,40 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-4 py-2 bg-cyan-400/20 text-cyan-400 text-sm rounded-lg
-            hover:bg-cyan-400/30 transition-colors w-full text-center mx-auto max-w-[200px]"
+            hover:bg-cyan-400/30 transition-colors mx-auto max-w-[200px]"
+                >
+                  Learn More
+                </a>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Supported By - Centered */}
+          <div className="max-w-md mx-auto">
+            {supportingSponsors.slice(2).map((sponsor, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
+              >
+                <img
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  className="h-32 mx-auto mb-4 object-contain"
+                />
+                <h3 className="text-xl font-bold text-white mb-2">{sponsor.name}</h3>
+                <p className="text-cyan-400 text-sm mb-3">{sponsor.category}</p>
+                <p className="text-gray-300 text-sm mb-4">{sponsor.description}</p>
+                <a
+                  href={sponsor.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-4 py-2 bg-cyan-400/20 text-cyan-400 text-sm rounded-lg
+            hover:bg-cyan-400/30 transition-colors mx-auto max-w-[200px]"
                 >
                   Learn More
                 </a>

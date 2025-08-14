@@ -27,7 +27,7 @@ const Event: React.FC = () => {
   ];
 
   const rules = [
-    'Teams must consist of 2-4 members',
+    'Teams must consist of 1 - 4 members',
     'All projects must be started from scratch during the event',
     'Use of external libraries and APIs is allowed',
     'Projects must address at least one of the given problem statements',
@@ -204,7 +204,7 @@ const Event: React.FC = () => {
                   <li>🎧 Headphones</li>
                   <li>☕ Energy drinks/snacks</li>
                   <li>📝 Notebook & pen</li>
-                  <li>🛌 Sleeping bag/pillow</li>
+                  {/* <li>🛌 Sleeping bag/pillow</li> */}
                 </ul>
               </div>
             </div>
