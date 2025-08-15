@@ -323,7 +323,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
-              onClick={() => setCurrentPage('contact')}
+              onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSeH3w7n7pbhhrO75_HeJ3GtrAug0HBB6HXn2b4Q5xow6hrPyA/viewform', '_blank')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 border border-cyan-400 text-cyan-400 font-semibold rounded-lg hover:bg-cyan-400/10 transition-colors"
