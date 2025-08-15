@@ -78,18 +78,82 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
     },
   ];
 
+  const animationConfig = {
+    // Reduced animation duration and simplified transitions
+    initial: { opacity: 0 },
+    whileInView: { opacity: 1 },
+    viewport: { once: true, margin: "-50px" },
+    transition: { duration: 0.3 }
+  };
+
+  const heroAnimationConfig = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { duration: 0.5 }
+  };
+
   const NeonLine: React.FC = () => (
     <motion.div
       className="h-[1px] bg-[#00f0ff]/20"
-      initial={{ scaleX: 0, opacity: 0 }}
-      whileInView={{ scaleX: 1, opacity: 1 }}
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 1 }}
-      style={{
-        boxShadow: '0 0 10px #00f0ff',
-      }}
+      transition={{ duration: 0.5 }}
     />
   );
+
+  const hoverConfig = {
+    whileHover: { scale: 1.02 }, // Reduced scale effect
+    whileTap: { scale: 0.98 },
+    transition: { duration: 0.2 }
+  };
+
+  const shouldReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Create a conditional animation config
+  const getAnimationConfig = (isImportant = false) => {
+    if (shouldReduceMotion && !isImportant) {
+      return {
+        initial: {},
+        animate: {},
+        whileInView: {},
+        transition: { duration: 0 }
+      };
+    }
+    return animationConfig;
+  };
+
+  // Use React.memo for static components
+  const SponsorCard = React.memo(({ sponsor }) => (
+    <motion.div
+      {...getAnimationConfig()}
+      className="text-center"
+    >
+      <h3 className="text-xl font-bold text-[#00f0ff] mb-4">{sponsor.category}</h3>
+      <div className="bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-8">
+        <img
+          src={sponsor.logo}
+          alt={sponsor.name}
+          className="w-32 h-56 mx-auto mb-4 object-contain"
+        />
+        <div className="text-white font-semibold text-lg">{sponsor.name}</div>
+      </div>
+    </motion.div>
+  ));
+
+  // Optimize list rendering
+  const renderFAQs = React.useMemo(() => (
+    faqs.map((faq, index) => (
+      <motion.div
+        key={index}
+        {...getAnimationConfig()}
+        className="bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-6"
+      >
+        <h3 className="text-xl font-bold text-[#00f0ff] mb-3">{faq.question}</h3>
+        <p className="font-exo leading-relaxed text-[#e6e6e6]">{faq.answer}</p>
+      </motion.div>
+    ))
+  ), [faqs]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#000000] via-[#0d0d1a] to-[#000000]">
@@ -107,9 +171,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
         >
           <motion.h1
             className="cyberpunk-title text-6xl md:text-8xl mb-6 neon-text"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            {...heroAnimationConfig}
             style={{
               textShadow: '0 0 30px #00f0ff, 0 0 60px #00f0ff, 0 0 90px #00f0ff'
             }}
@@ -162,7 +224,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             <motion.button
               onClick={() => setCurrentPage('registration')}
               className="px-8 py-4 bg-cyan-400 text-slate-900 rounded-lg font-bold text-lg hover:bg-cyan-300 transition-colors w-full sm:w-auto"
-              whileHover={{ scale: 1.05 }}
+              {...hoverConfig}
             >
               REGISTER NOW
             </motion.button>
@@ -171,7 +233,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             <motion.button
               onClick={() => setCurrentPage('problem-statements')}
               className="px-8 py-4 bg-cyan-400/20 text-cyan-400 rounded-lg font-bold text-lg hover:bg-cyan-400/30 transition-colors w-full sm:w-auto"
-              whileHover={{ scale: 1.05 }}
+              {...hoverConfig}
             >
               PROBLEM STATEMENTS
             </motion.button>
@@ -187,7 +249,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             <motion.button
               onClick={() => setCurrentPage('attendance')}
               className="px-8 py-4 bg-cyan-400/20 text-cyan-400 rounded-lg font-bold text-lg hover:bg-cyan-400/30 transition-colors w-full sm:w-auto max-w-md"
-              whileHover={{ scale: 1.05 }}
+              {...hoverConfig}
             >
               MARK ATTENDANCE
             </motion.button>
@@ -299,9 +361,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            {...animationConfig}
             className="max-w-4xl mx-auto bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-6"
           >
             <div className="relative aspect-video rounded-lg overflow-hidden">
@@ -340,15 +400,8 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             {eventHighlights.map((highlight, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: '0 0 30px rgba(0, 240, 255, 0.3)',
-                }}
-                className="bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-6 text-center transition-all duration-300"
+                {...animationConfig}
+                className="bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-6 text-center"
               >
                 <highlight.icon className="w-12 h-12 text-[#00f0ff] mx-auto mb-4 neon-text" />
                 <h3 className="text-xl font-bold text-[#00f0ff] mb-3 neon-text">{highlight.title}</h3>
@@ -450,24 +503,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {sponsors.map((sponsor, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="text-center"
-              >
-                <h3 className="text-xl font-bold text-[#00f0ff] mb-4">{sponsor.category}</h3>
-                <div className="bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-8">
-                  <img
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    className="w-32 h-56 mx-auto mb-4 object-contain"
-                  />
-                  <div className="text-white font-semibold text-lg">{sponsor.name}</div>
-                </div>
-              </motion.div>
+              <SponsorCard key={index} sponsor={sponsor} />
             ))}
           </div>
 
@@ -500,19 +536,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
           </motion.div>
 
           <div className="max-w-4xl mx-auto space-y-6">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-[#0d0d1a]/50 backdrop-blur-sm border border-[#00f0ff]/20 rounded-xl p-6"
-              >
-                <h3 className="text-xl font-bold text-[#00f0ff] mb-3">{faq.question}</h3>
-                <p className="font-exo leading-relaxed text-[#e6e6e6]">{faq.answer}</p>
-              </motion.div>
-            ))}
+            {renderFAQs}
           </div>
         </div>
       </section>

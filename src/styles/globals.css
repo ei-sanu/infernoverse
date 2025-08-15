@@ -164,3 +164,22 @@
 .fab:hover {
     text-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
 }
+
+/* Add to your global CSS file */
+.optimized-animations * {
+    /* Use transform instead of opacity/visibility */
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    /* Optimize paint operations */
+    will-change: transform, opacity;
+}
+
+/* Reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
