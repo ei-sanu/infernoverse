@@ -74,7 +74,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
     {
       category: 'COLLABORATION PARTNER',
       name: 'GeeksforGeeks LPU Student Chapter',
-      logo: '/.png',
+      logo: '/gfglpu.png',
     },
   ];
 

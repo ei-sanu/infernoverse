@@ -1,6 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, MapPin, Users, Trophy, Star } from 'lucide-react';
+import { Calendar, Clock, MapPin, Star, Trophy, Users } from 'lucide-react';
+import React from 'react';
 
 const Event: React.FC = () => {
   const schedule = [
@@ -20,10 +20,26 @@ const Event: React.FC = () => {
   ];
 
   const prizes = [
-    { position: '1st Place', amount: '₹1,00,000', description: 'Winner takes all + internship opportunities' },
-    { position: '2nd Place', amount: '₹75,000', description: 'Runner-up prize + mentorship program' },
-    { position: '3rd Place', amount: '₹50,000', description: 'Third place prize + GeeksforGeeks goodies' },
-    { position: 'Top 10', amount: 'Certificates', description: 'GeeksforGeeks certification + swag kit' },
+    {
+      position: '1st Place',
+      amount: 'GFG Merchandise + Paid Internship + Trophy + Merit Certificate',
+      description: 'Top winner gets exclusive GeeksforGeeks merchandise, a paid internship opportunity, a trophy, and a merit certificate (in partnership with GFG).',
+    },
+    {
+      position: '2nd Place',
+      amount: 'GFG Merchandise + Paid Internship Opportunity + Trophy + Merit Certificate',
+      description: 'Runner-up receives GeeksforGeeks merchandise, a paid internship opportunity, a trophy, and a merit certificate (in partnership with GFG).',
+    },
+    {
+      position: '3rd Place',
+      amount: 'GFG Merchandise + Paid Internship Opportunity + Trophy + Merit Certificate',
+      description: 'Third place gets GeeksforGeeks merchandise, a paid internship opportunity, a trophy, and a merit certificate (in partnership with GFG).',
+    },
+    {
+      position: 'All Participants',
+      amount: '3 Certificates + ₹4,000 Voucher',
+      description: 'Every active participant receives a certificate (in partnership with GFG), another from inferno and one more from a well recognition company and a voucher worth ₹4,000.',
+    },
   ];
 
   const rules = [

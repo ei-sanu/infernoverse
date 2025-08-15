@@ -36,6 +36,7 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
   const [loading, setLoading] = useState(false);
   const [teamSize, setTeamSize] = useState('solo');
   const [amount, setAmount] = useState(99);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const upiId = 'shivanshsky0808-1@oksbi';
 
@@ -115,7 +116,8 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
         }
       );
 
-      alert('Registration submitted successfully!');
+      // Instead of alert, show success modal
+      setShowSuccess(true);
 
       // Reset form
       setFormData({
@@ -146,6 +148,66 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const SuccessModal = () => {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+        onClick={() => setShowSuccess(false)}
+      >
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.5, opacity: 0 }}
+          transition={{ type: "spring", damping: 15 }}
+          className="bg-slate-800 border border-cyan-400/20 rounded-xl p-8 max-w-md mx-4 text-center"
+          onClick={e => e.stopPropagation()}
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1, rotate: 360 }}
+            transition={{ delay: 0.2 }}
+            className="w-20 h-20 bg-cyan-400 rounded-full mx-auto mb-6 flex items-center justify-center"
+          >
+            <Check className="w-10 h-10 text-slate-900" />
+          </motion.div>
+
+          <motion.h2
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-2xl font-bold text-cyan-400 mb-4"
+          >
+            Registration Successful!
+          </motion.h2>
+
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="text-gray-300 mb-6"
+          >
+            Get ready for an amazing hackathon experience! Make sure to prepare well and bring your best ideas forward.
+          </motion.p>
+
+          <motion.button
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 py-3 bg-cyan-400 text-slate-900 rounded-lg font-semibold"
+            onClick={() => setShowSuccess(false)}
+          >
+            Got it!
+          </motion.button>
+        </motion.div>
+      </motion.div>
+    );
   };
 
   return (
@@ -511,6 +573,9 @@ const Registration: React.FC<RegistrationProps> = ({ onBack }) => {
           </div>
         </motion.div>
       </div>
+
+      {/* Success Modal */}
+      {showSuccess && <SuccessModal />}
     </div>
   );
 };
