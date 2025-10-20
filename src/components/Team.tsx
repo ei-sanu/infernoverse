@@ -46,7 +46,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     {
       name: 'Somesh Ranjan Biswal',
       role: 'Platform Developer and Chief Technical Officer',
-      image: '/sanuu.jpg',
+      image: '/sanunew.jpeg',
       bio: 'Developer with expertise in building scalable hackathon platforms, specializing in real-time collaboration tools',
       social: {
         linkedin: 'www.linkedin.com/in/somesh-biswal-b73576320',
