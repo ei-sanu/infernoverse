@@ -65,23 +65,33 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
 
       }
     },
+  ];
+  const coordinator = [
     {
-      name: 'Kushagra Bajpei',
-      role: 'Tech Member',
-      image: 'kushu.png',
-      bio: 'Passionate tech enthusiast driven by innovation, problem-solving, and building impactful digital solutions.',
+      name: 'Anshit Kumar',
+      role: 'Event Coordinator',
+      image: '/Anshit.jpg',
+      bio: 'I provide creative and practical suggestions to ensure the event is seamlessly planned and executed with excellence',
       social: {
-        linkedin: 'https://www.linkedin.com/in/kushagra-bajpei-248583316',
-
+        linkedin: 'https://www.linkedin.com/in/anshit-kumar-841690313?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       }
-    }
+    },
+    {
+      name: 'Paras Patil',
+      role: 'Event Coordinator',
+      image: '/.jpg',
+      bio: 'I provide creative and practical suggestions to ensure the event is seamlessly planned and executed with excellence',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/anshit-kumar-841690313?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+      }
+    },
   ];
 
   const mentors = [
     {
       name: 'Dr. Lisa Thompson',
       role: 'AI Research Mentor',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
+      image: '',
       bio: 'Professor of Computer Science specializing in Machine Learning',
       company: 'Stanford University',
       social: {
@@ -92,7 +102,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     {
       name: 'Raj Patel',
       role: 'Industry Mentor',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
+      image: '',
       bio: 'Senior Engineering Manager at leading tech company',
       company: 'Google',
       social: {
@@ -104,7 +114,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     {
       name: 'Maria Garcia',
       role: 'Startup Mentor',
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
+      image: '',
       bio: 'Serial entrepreneur and venture capitalist',
       company: 'TechVentures',
       social: {
@@ -220,7 +230,8 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
           className="mb-16"
         >
           <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">TECHNICAL TEAM</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl">
             {technicalTeam.map((member, index) => (
               <motion.div
                 key={index}
@@ -242,9 +253,46 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
                 {renderSocialLinks(member.social)}
               </motion.div>
             ))}
+              </div>
           </div>
+
         </motion.div>
 
+        {/* Coordinators */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">EVENT COORDINATORS</h2>
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl">
+              {coordinator.map((member, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
+                >
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400/20"
+                  />
+                  <h3 className="text-lg font-bold text-white mb-2">{member.name}</h3>
+                  <p className="text-cyan-400 font-medium mb-3">{member.role}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed">{member.bio}</p>
+                  {renderSocialLinks(member.social)}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+        </motion.div>
         {/* Mentors */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
