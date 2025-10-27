@@ -45,7 +45,7 @@ const DiscloseProblems: React.FC<DiscloseProblemsProps> = ({ onBack }) => {
                         <div className="flex flex-col md:flex-row justify-center gap-6 mb-8">
                             <div className="flex items-center justify-center space-x-2 text-[#00f0ff]">
                                 <Calendar className="w-5 h-5" />
-                                <span>September 20, 2025</span>
+                                <span>November 14, 2025</span>
                             </div>
                             <div className="flex items-center justify-center space-x-2 text-[#00f0ff]">
                                 <Clock className="w-5 h-5" />
