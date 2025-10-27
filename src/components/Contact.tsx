@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
     try {
       const form = event.currentTarget;
       const formData = new FormData(form);
-      formData.append("access_key", "df286f06-934a-4d43-8577-f2b3bcef8764");
+      formData.append("access_key", "71e7dffb-1592-4f1e-9c33-4b70a0ea8c8e");
 
       // Add some basic validation
       const email = formData.get('email') as string;
