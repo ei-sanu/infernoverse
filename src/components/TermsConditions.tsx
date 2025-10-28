@@ -42,7 +42,7 @@ const TermsConditions: React.FC<TermsConditionsProps> = ({ onBack }) => {
                                 <h2 className="text-2xl font-semibold text-cyan-400 mb-4">2. Hackathon Overview</h2>
                                 <p>
                                     Inferno Verse 2025 is a 24-hour AI hackathon bringing together 1,000+ brilliant innovators to solve
-                                    real-world challenges using Artificial Intelligence. The event will be held on September 20, 2025, at LPU, Punjab.
+                                    real-world challenges using Artificial Intelligence. The event will be held on November 14, 2025, at LPU, Punjab.
                                 </p>
                             </section>
 
@@ -112,8 +112,8 @@ const TermsConditions: React.FC<TermsConditionsProps> = ({ onBack }) => {
                                 <h2 className="text-2xl font-semibold text-cyan-400 mb-4">10. Contact Information</h2>
                                 <p>
                                     For questions about these terms, please contact us at{' '}
-                                    <a href="mailto:info@infernoverse.com" className="text-cyan-400 hover:underline">
-                                        info@infernoverse.com
+                                    <a href="mailto:infernoofficial694@gmail.com" className="text-cyan-400 hover:underline">
+                                        infernoofficial694@gmail.com
                                     </a>
                                 </p>
                             </section>

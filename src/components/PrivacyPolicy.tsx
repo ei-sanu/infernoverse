@@ -151,8 +151,8 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
                                 <h2 className="text-2xl font-semibold text-cyan-400 mb-4">12. Contact Us</h2>
                                 <p>
                                     For privacy-related questions or to exercise your rights, contact us at{' '}
-                                    <a href="mailto:privacy@infernoverse.com" className="text-cyan-400 hover:underline">
-                                        privacy@infernoverse.com
+                                    <a href="mailto:infernoofficial694@gmail.com" className="text-cyan-400 hover:underline">
+                                        infernoofficial694@gmail.com
                                     </a>
                                 </p>
                             </section>

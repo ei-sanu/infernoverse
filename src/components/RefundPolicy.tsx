@@ -44,8 +44,8 @@ const RefundPolicy: React.FC<RefundPolicyProps> = ({ onBack }) => {
                         <h2 className="text-2xl font-semibold text-cyan-400 mb-4">Contact Information</h2>
                         <p>
                             If you have any questions about our refund policy, please contact us at:{' '}
-                            <a href="mailto:info@infernoverse.com" className="text-cyan-400 hover:underline">
-                                info@infernoverse.com
+                            <a href="mailto:infernoofficial694@gmail.com" className="text-cyan-400 hover:underline">
+                                infernoofficial694@gmail.com
                             </a>
                         </p>
                     </section>

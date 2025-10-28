@@ -19,30 +19,6 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
 
       }
     },
-    // {
-    //   name: 'Sarah Wilson',
-    //   role: 'Technical Lead',
-    //   image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=300',
-    //   bio: 'Full-stack developer and AI researcher passionate about education',
-    //   social: {
-    //     linkedin: '#',
-    //     twitter: '#',
-    //     github: '#',
-    //     email: 'sarah@infernoverse.com'
-    //   }
-    // },
-    {
-      name: 'Vinay Kothari',
-      role: 'Operations Manager',
-      image: 'vinayf.jpeg',
-      bio: 'Event management expert with focus on tech conferences and hackathons',
-      social: {
-        linkedin: 'https://www.linkedin.com/in/vinay-k-929b71347?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      }
-    }
-  ];
-
-  const technicalTeam = [
     {
       name: 'Somesh Ranjan Biswal',
       role: 'Platform Developer and Chief Technical Officer',
@@ -56,16 +32,40 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
       }
     },
     {
-      name: 'Vishwajeet survase',
-      role: 'Tech Member',
-      image: 'vishwajeet.jpeg',
-      bio: 'AI ML enthusiast with a passion for building innovative solutions',
+      name: 'Vinay Kothari',
+      role: 'Operations Manager',
+      image: 'vinayf.jpeg',
+      bio: 'Event management expert with focus on tech conferences and hackathons',
       social: {
-        linkedin: 'https://www.linkedin.com/in/shivansh-singh-08july2005?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-
+        linkedin: 'https://www.linkedin.com/in/vinay-k-929b71347?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       }
-    },
+    }
   ];
+
+  // const technicalTeam = [
+  //   {
+  //     name: 'Somesh Ranjan Biswal',
+  //     role: 'Platform Developer and Chief Technical Officer',
+  //     image: '/sanunew.jpeg',
+  //     bio: 'Developer with expertise in building scalable hackathon platforms, specializing in real-time collaboration tools',
+  //     social: {
+  //       linkedin: 'www.linkedin.com/in/somesh-biswal-b73576320',
+  //       github: 'https://github.com/ei-sanu',
+  //       email: 'someshranjanbiswal13678@gmail.com'
+
+  //     }
+  //   },
+  //   {
+  //     name: 'Vishwajeet survase',
+  //     role: 'Tech Member',
+  //     image: 'vishwajeet.jpeg',
+  //     bio: 'AI ML enthusiast with a passion for building innovative solutions',
+  //     social: {
+  //       linkedin: 'https://www.linkedin.com/in/shivansh-singh-08july2005?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+
+  //     }
+  //   },
+  // ];
   const coordinator = [
     {
       name: 'Anshit Kumar',
@@ -79,10 +79,20 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     {
       name: 'Paras Patil',
       role: 'Event Coordinator',
-      image: '/.jpg',
+      image: '/paras.jpeg',
       bio: 'I provide creative and practical suggestions to ensure the event is seamlessly planned and executed with excellence',
       social: {
         linkedin: 'https://www.linkedin.com/in/anshit-kumar-841690313?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+      }
+    },
+    {
+      name: 'Vishwajeet survase',
+      role: 'Tech Member',
+      image: 'vishwajeet.jpeg',
+      bio: 'AI ML enthusiast with a passion for building innovative solutions',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/shivansh-singh-08july2005?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+
       }
     },
   ];
@@ -91,7 +101,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     {
       name: 'Raghu Raja Sharma',
       role: 'Technical Expert, CSE Department',
-      image: '', // Add image path when available
+      image: '/raghurajguest.jpeg', // Add image path when available
       uid: 'UID-30782',
       social: {
         linkedin: 'linkedin.com/in/raghu-sharma-437571146'
@@ -109,10 +119,35 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     {
       name: 'Praful Yadav',
       role: 'Full Stack Developer @CodeBooks Solutions',
-      image: '', // Add image path when available
+      image: '/prafulyadavguest.jpeg', // Add image path when available
       uid: 'UID-66843',
       social: {
         linkedin: 'linkedin.com/in/praful-yadav-b46100215'
+      }
+    }
+  ];
+
+  const guests = [
+    {
+      name: 'Dr. Nitin Bhardwaj',
+      role: 'Deputy Dean, Division of Youth Affairs',
+      organization: 'Lovely Professional University',
+      image: '/nitin-bhardwaj.jpg', // Add the image to your public folder
+      speciality: 'Youth Development & Student Affairs Expert',
+      bio: 'Leading academic administrator with expertise in student development and university affairs',
+      social: {
+        linkedin: '#' // Add LinkedIn if available
+      }
+    },
+    {
+      name: 'Mr. Deepak Chawla',
+      role: 'Founder & CEO @HiDevs',
+      organization: 'hidevs.xyz',
+      image: '/deepakchawla.jpeg',
+      speciality: 'Generative AI Expert',
+      bio: 'Workshop on Generative AI – Building Smarter Futures with AI',
+      social: {
+        linkedin: 'linkedin.com/in/deepakchawla1307'
       }
     }
   ];
@@ -187,8 +222,8 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
           className="mb-16"
         >
           <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">CORE ORGANIZERS</h2>
-          <div className="flex justify-center"> {/* Added flex container for centering */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl"> {/* Changed to 2 columns and added max width */}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl"> {/* Changed to 3 columns and increased max width */}
               {organizers.map((member, index) => (
                 <motion.div
                   key={index}
@@ -197,16 +232,16 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
+                  className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-6 text-center" // Reduced padding slightly
                 >
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-cyan-400/20"
+                    className="w-28 h-28 rounded-full mx-auto mb-4 object-cover border-4 border-cyan-400/20" // Adjusted image size
                   />
-                  <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                  <h3 className="text-lg font-bold text-white mb-2">{member.name}</h3>
                   <p className="text-cyan-400 font-medium mb-3">{member.role}</p>
-                  <p className="text-gray-300 text-sm leading-relaxed flex justify-center">{member.bio}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed">{member.bio}</p>
                   {renderSocialLinks(member.social)}
                 </motion.div>
               ))}
@@ -214,7 +249,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
           </div>
         </motion.div>
 
-        {/* Technical Team */}
+        {/* Technical Team
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -248,7 +283,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
             </div>
           </div>
 
-        </motion.div>
+        </motion.div> */}
 
         {/* Coordinators */}
         <motion.div
@@ -259,7 +294,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
         >
           <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">EVENT COORDINATORS</h2>
           <div className="flex justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl">
               {coordinator.map((member, index) => (
                 <motion.div
                   key={index}
@@ -268,12 +303,12 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
+                  className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-6 text-center"
                 >
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400/20"
+                    className="w-28 h-28 rounded-full mx-auto mb-4 object-cover border-4 border-cyan-400/20"
                   />
                   <h3 className="text-lg font-bold text-white mb-2">{member.name}</h3>
                   <p className="text-cyan-400 font-medium mb-3">{member.role}</p>
@@ -283,7 +318,6 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
               ))}
             </div>
           </div>
-
         </motion.div>
         {/* Judges Panel */}
         <motion.div
@@ -315,6 +349,43 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
                 {renderSocialLinks(judge.social)}
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Special Guests */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">✨ SPECIAL GUESTS</h2>
+          <div className="flex justify-center"> {/* Added flex container */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl"> {/* Changed to 2 columns and max-width */}
+              {guests.map((guest, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
+                >
+                  <img
+                    src={guest.image || '/default-avatar.png'}
+                    alt={guest.name}
+                    className="w-28 h-28 rounded-full mx-auto mb-4 object-cover border-4 border-cyan-400/20"
+                  />
+                  <h3 className="text-lg font-bold text-white mb-1">{guest.name}</h3>
+                  <p className="text-cyan-400 font-medium mb-2">{guest.role}</p>
+                  <p className="text-gray-300 text-sm mb-2">{guest.organization}</p>
+                  <p className="text-gray-400 text-sm mb-2">{guest.speciality}</p>
+                  <p className="text-gray-300 text-sm mb-3">{guest.bio}</p>
+                  {renderSocialLinks(guest.social)}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
 

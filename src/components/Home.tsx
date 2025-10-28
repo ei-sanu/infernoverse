@@ -200,7 +200,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
           <div className="flex items-center justify-center space-x-4 mb-8 text-cyan-400">
             <div className="flex items-center space-x-2">
               <Calendar className="w-5 h-5" />
-              <span>September 20, 2025</span>
+              <span>November 14, 2025</span>
             </div>
             <div className="w-1 h-1 bg-cyan-400 rounded-full" />
             <div className="flex items-center space-x-2">
@@ -221,13 +221,13 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             transition={{ delay: 1, duration: 0.5 }}
           >
             {/* Register Now Button - Primary */}
-            <motion.button
+            {/* <motion.button
               onClick={() => setCurrentPage('registration')}
               className="px-8 py-4 bg-cyan-400 text-slate-900 rounded-lg font-bold text-lg hover:bg-cyan-300 transition-colors w-full sm:w-auto"
               {...hoverConfig}
             >
               REGISTER NOW
-            </motion.button>
+            </motion.button> */}
 
             {/* Problem Statements Button - Secondary */}
             <motion.button
