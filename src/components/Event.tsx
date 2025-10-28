@@ -4,42 +4,53 @@ import React from 'react';
 
 const Event: React.FC = () => {
   const schedule = [
-    { time: '09:00 AM', activity: 'Registration & Check-in', description: 'Participant registration and welcome kit distribution' },
-    { time: '10:00 AM', activity: 'Opening Ceremony', description: 'Welcome address and event guidelines' },
-    { time: '11:00 AM', activity: 'Problem Statement Release', description: 'Detailed problem statements shared with teams' },
-    { time: '12:00 PM', activity: 'Hacking Begins!', description: '24-hour coding marathon starts' },
-    { time: '02:00 PM', activity: 'Lunch Break', description: 'Networking lunch for all participants' },
-    { time: '06:00 PM', activity: 'Mentor Sessions', description: 'One-on-one guidance from industry experts' },
-    { time: '08:00 PM', activity: 'Dinner & Networking', description: 'Evening meal and team interactions' },
-    { time: '12:00 AM', activity: 'Midnight Snacks', description: 'Late night fuel for coding warriors' },
-    { time: '06:00 AM', activity: 'Breakfast', description: 'Morning refreshments' },
-    { time: '11:00 AM', activity: 'Final Submissions', description: 'Last chance for project submissions' },
-    { time: '12:00 PM', activity: 'Presentations Begin', description: 'Teams present their solutions' },
-    { time: '04:00 PM', activity: 'Judging & Awards', description: 'Final evaluation and prize distribution' },
-    { time: '05:00 PM', activity: 'Closing Ceremony', description: 'Event wrap-up and networking' },
+    { time: '05:00 PM (14 Nov, 2025)', activity: 'Registration & Check-in', description: 'Participants Check-In, Verifcation and seating arrangements.' },
+    { time: '05:30 PM', activity: 'Opening Ceremony', description: 'Welcome speech by organizers and introduction of judges and guests.' },
+    { time: '06:00 PM', activity: 'Round 1: Decrypt the code ', description: 'Pen & Paper mode challenge – logic & cryptographic problems' },
+    { time: '08:00 PM', activity: 'Dinner Break', description: 'Participants escorted to hostels/food courts (1 hour 15 mins).' },
+    { time: '09:30 PM', activity: 'Round 2: Control Panel Ceration', description: 'Teams develop a system based on the given problem statements' },
+    { time: '12:30 AM (15 Nov, 2025)', activity: 'Midnight Process Checks', description: 'Evaluation and mentoring by technical experts & judges.' },
+    { time: '03:00 AM', activity: 'Snacks Break', description: 'Light refreshments and mentor networking.' },
+    { time: '06:30 AM', activity: 'Final Touches', description: 'Teams finalize their projects before evaluation.' },
+    { time: '08:45 AM', activity: 'Breakfast Break ', description: 'End of Round 2 and preparation for evaluation.' },
+    { time: '10:00 AM', activity: 'Evaluation Round 2', description: 'Judges review submissions and shortlist Top 8 teams.' },
+    { time: '11:00 AM', activity: 'Online Gen AI ', description: 'Conducted by Mr. Deepak Chawla, Founder & CEO of HiDevs – Introduction to Generative AI & Future Opportunities.' },
+    { time: '12:00 PM', activity: 'Result Declarations', description: 'Announcement of finalists moving to Round 3.' },
+    { time: '12:30 PM', activity: 'Presentation and Viva', description: 'Top 8 teams present their projects to the panel.' },
+    { time: '02:00 PM', activity: 'Judges’ Deliberation', description: 'Final scoring and result preparation.' },
+    { time: '02:30 PM', activity: 'Felicitation Ceremony', description: 'Final scoring and result preparation.' },
+    { time: '04:00 PM', activity: 'Photo Sessions and Ceremony', description: 'Group photo and mentor-mentee networking session.' },
   ];
 
   const prizes = [
     {
-      position: '1st Place',
-      amount: 'GFG Merchandise + Paid Internship + Trophy + Merit Certificate',
-      description: 'Top winner gets exclusive GeeksforGeeks merchandise, a paid internship opportunity, a trophy, and a merit certificate (in partnership with GFG).',
+      position: '🥇 First Place',
+      amount: 'Trophy + Premium Benefits',
+      description: 'Trophy + Certificates from INFERNO Club and partners, GeeksforGeeks Goodies, Paid Internships (HiDevs, GeeksforGeeks, Sheriyan Coding School), ₹2000 LIVN Hampers per member, ₹4000 HiDevs Voucher, 3+ Certificates'
     },
     {
-      position: '2nd Place',
-      amount: 'GFG Merchandise + Paid Internship Opportunity + Trophy + Merit Certificate',
-      description: 'Runner-up receives GeeksforGeeks merchandise, a paid internship opportunity, a trophy, and a merit certificate (in partnership with GFG).',
+      position: '🥈 Second Place',
+      amount: 'Trophy + Premium Benefits',
+      description: 'Trophy + Certificates from INFERNO Club and partners, GeeksforGeeks Goodies, Paid Internships (HiDevs, GeeksforGeeks, Sheriyan Coding School), ₹2000 LIVN Hampers per member, ₹4000 HiDevs Voucher, 3+ Certificates'
     },
     {
-      position: '3rd Place',
-      amount: 'GFG Merchandise + Paid Internship Opportunity + Trophy + Merit Certificate',
-      description: 'Third place gets GeeksforGeeks merchandise, a paid internship opportunity, a trophy, and a merit certificate (in partnership with GFG).',
+      position: '🥉 Third Place',
+      amount: 'Trophy + Premium Benefits',
+      description: 'Trophy + Certificates from INFERNO Club and partners, GeeksforGeeks Goodies, Paid Internships (HiDevs, GeeksforGeeks, Sheriyan Coding School), ₹2000 LIVN Hampers per member, ₹4000 HiDevs Voucher, 3+ Certificates'
+    }
+  ];
+
+  const additionalPrizes = [
+    {
+      position: '🎯 All Participants',
+      amount: 'Benefits Package',
+      description: '₹4000 HiDevs Voucher, 3+ Certificates (INFERNO Club, GeeksforGeeks, HiDevs), 10% LIVN Discount Coupon, E-Certificate of Participation'
     },
     {
-      position: 'All Participants',
-      amount: '3 Certificates + ₹4,000 Voucher',
-      description: 'Every active participant receives a certificate (in partnership with GFG), another from inferno and one more from a well recognition company and a voucher worth ₹4,000.',
-    },
+      position: '🚀 Top 20 Teams',
+      amount: 'Special Access',
+      description: 'Exclusive access to the HiDevs Startup Fundraising Scheme to help kickstart your entrepreneurial journey'
+    }
   ];
 
   const rules = [
@@ -139,8 +150,10 @@ const Event: React.FC = () => {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <h2 className="text-3xl font-bold text-cyan-400 mb-8 text-center">Prizes & Rewards</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="text-3xl font-bold text-cyan-400 mb-8 text-center">PRIZES & REWARDS</h2>
+
+          {/* Top 3 Winners */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {prizes.map((prize, index) => (
               <motion.div
                 key={index}
@@ -148,13 +161,37 @@ const Event: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-6 text-center"
+                whileHover={{ scale: 1.02 }}
+                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-6 text-center h-full flex flex-col justify-between"
               >
-                <Trophy className="w-12 h-12 text-cyan-400 mx-auto mb-3" />
-                <h3 className="text-xl font-bold text-cyan-400 mb-2">{prize.position}</h3>
-                <p className="text-2xl font-bold text-white mb-3">{prize.amount}</p>
-                <p className="text-gray-300 text-sm">{prize.description}</p>
+                <div>
+                  <Trophy className="w-12 h-12 text-cyan-400 mx-auto mb-3" />
+                  <h3 className="text-xl font-bold text-cyan-400 mb-2">{prize.position}</h3>
+                  <p className="text-xl font-bold text-white mb-3">{prize.amount}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed">{prize.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Additional Prizes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {additionalPrizes.map((prize, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-6 text-center h-full flex flex-col justify-between"
+              >
+                <div>
+                  <Star className="w-12 h-12 text-cyan-400 mx-auto mb-3" />
+                  <h3 className="text-xl font-bold text-cyan-400 mb-2">{prize.position}</h3>
+                  <p className="text-xl font-bold text-white mb-3">{prize.amount}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed">{prize.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>

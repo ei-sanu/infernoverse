@@ -87,40 +87,32 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     },
   ];
 
-  const mentors = [
+  const judges = [
     {
-      name: 'Dr. Lisa Thompson',
-      role: 'AI Research Mentor',
-      image: '',
-      bio: 'Professor of Computer Science specializing in Machine Learning',
-      company: 'Stanford University',
+      name: 'Raghu Raja Sharma',
+      role: 'Technical Expert, CSE Department',
+      image: '', // Add image path when available
+      uid: 'UID-30782',
       social: {
-        linkedin: '#',
-        email: 'lisa@stanford.edu'
+        linkedin: 'linkedin.com/in/raghu-sharma-437571146'
       }
     },
     {
-      name: 'Raj Patel',
-      role: 'Industry Mentor',
-      image: '',
-      bio: 'Senior Engineering Manager at leading tech company',
-      company: 'Google',
+      name: 'Himanshu Sharma',
+      role: 'Ex-SDE @Amazon | Founder @CodeDevh',
+      image: '', // Add image path when available
+      uid: 'UID-66829',
       social: {
-        linkedin: '#',
-        twitter: '#',
-        email: 'raj@google.com'
+        linkedin: 'linkedin.com/in/himanshu-sharma-8b4766251'
       }
     },
     {
-      name: 'Maria Garcia',
-      role: 'Startup Mentor',
-      image: '',
-      bio: 'Serial entrepreneur and venture capitalist',
-      company: 'TechVentures',
+      name: 'Praful Yadav',
+      role: 'Full Stack Developer @CodeBooks Solutions',
+      image: '', // Add image path when available
+      uid: 'UID-66843',
       social: {
-        linkedin: '#',
-        twitter: '#',
-        email: 'maria@techventures.com'
+        linkedin: 'linkedin.com/in/praful-yadav-b46100215'
       }
     }
   ];
@@ -232,28 +224,28 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
           <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">TECHNICAL TEAM</h2>
           <div className="flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl">
-            {technicalTeam.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400/20"
-                />
-                <h3 className="text-lg font-bold text-white mb-2">{member.name}</h3>
-                <p className="text-cyan-400 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-300 text-sm leading-relaxed">{member.bio}</p>
-                {renderSocialLinks(member.social)}
-              </motion.div>
-            ))}
-              </div>
+              {technicalTeam.map((member, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
+                >
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400/20"
+                  />
+                  <h3 className="text-lg font-bold text-white mb-2">{member.name}</h3>
+                  <p className="text-cyan-400 font-medium mb-3">{member.role}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed">{member.bio}</p>
+                  {renderSocialLinks(member.social)}
+                </motion.div>
+              ))}
+            </div>
           </div>
 
         </motion.div>
@@ -293,16 +285,16 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
           </div>
 
         </motion.div>
-        {/* Mentors */}
+        {/* Judges Panel */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">EXPERT MENTORS</h2>
+          <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">👩⚖️ JUDGES PANEL</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mentors.map((mentor, index) => (
+            {judges.map((judge, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -313,15 +305,14 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
                 className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
               >
                 <img
-                  src={mentor.image}
-                  alt={mentor.name}
+                  src={judge.image || '/default-avatar.png'} // Add a default avatar image
+                  alt={judge.name}
                   className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400/20"
                 />
-                <h3 className="text-lg font-bold text-white mb-1">{mentor.name}</h3>
-                <p className="text-cyan-400 font-medium mb-1">{mentor.role}</p>
-                <p className="text-gray-400 text-sm mb-3">{mentor.company}</p>
-                <p className="text-gray-300 text-sm leading-relaxed">{mentor.bio}</p>
-                {renderSocialLinks(mentor.social)}
+                <h3 className="text-lg font-bold text-white mb-1">{judge.name}</h3>
+                <p className="text-gray-400 text-sm mb-2">{judge.uid}</p>
+                <p className="text-cyan-400 font-medium mb-3">{judge.role}</p>
+                {renderSocialLinks(judge.social)}
               </motion.div>
             ))}
           </div>

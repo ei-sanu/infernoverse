@@ -13,7 +13,15 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
       description: 'Community platform connecting developers worldwide',
       website: 'https://app.hidevs.xyz/',
       category: 'INNOVATION PARTNER'
+    },
+    {
+      name: 'LIVN Hair Studio & Beauty Salon',
+      logo: '/livn-removebg-preview.png', // Add this logo to your public folder
+      description: 'Premium hair and beauty salon offering exclusive services',
+      website: 'https://livnsalon.com',
+      category: 'IN-KIND PARTNER'
     }
+
   ];
 
   const supportingSponsors = [
@@ -120,8 +128,8 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">INNOVATION PARTNER</h2>
-          <div className="flex justify-center">
+          <h2 className="text-3xl font-bold text-cyan-400 text-center mb-8">PREMIUM PARTNERS</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {titleSponsors.map((sponsor, index) => (
               <motion.div
                 key={index}
@@ -129,12 +137,13 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-12 text-center max-w-md"
+                className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
               >
+                <p className="text-sm font-semibold text-cyan-400 mb-4">{sponsor.category}</p>
                 <img
                   src={sponsor.logo}
                   alt={sponsor.name}
-                  className="w-32 h-32 mx-auto mb-6 object-contain"
+                  className="w-40 h-40 mx-auto mb-6 object-contain"
                 />
                 <h3 className="text-2xl font-bold text-white mb-4">{sponsor.name}</h3>
                 <p className="text-gray-300 mb-6">{sponsor.description}</p>
@@ -150,6 +159,7 @@ const Sponsors: React.FC<SponsorsProps> = ({ setCurrentPage }) => {
             ))}
           </div>
         </motion.div>
+
 
         {/* Supporting Sponsors */}
         <motion.div
