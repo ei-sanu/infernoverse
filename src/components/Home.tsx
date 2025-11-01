@@ -221,13 +221,13 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             transition={{ delay: 1, duration: 0.5 }}
           >
             {/* Register Now Button - Primary */}
-            {/* <motion.button
-              onClick={() => setCurrentPage('registration')}
+            <motion.button
+              onClick={() => window.open('https://tinyurl.com/MacbeaseInfernoverse', '_blank')}
               className="px-8 py-4 bg-cyan-400 text-slate-900 rounded-lg font-bold text-lg hover:bg-cyan-300 transition-colors w-full sm:w-auto"
               {...hoverConfig}
             >
               REGISTER NOW
-            </motion.button> */}
+            </motion.button>
 
             {/* Problem Statements Button - Secondary */}
             <motion.button
@@ -469,9 +469,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
               EVENT OPEN
             </div>
             <motion.button
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+              onClick={() => window.open('https://tinyurl.com/MacbeaseInfernoverse', '_blank')}
               whileHover={{
                 scale: 1.05,
                 textShadow: "0 0 8px rgb(0,240,255)",
