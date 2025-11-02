@@ -110,7 +110,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     {
       name: 'Himanshu Sharma',
       role: 'Ex-SDE @Amazon | Founder @CodeDevh',
-      image: '', // Add image path when available
+      image: '/himanshusir.jpeg', // Add image path when available
       uid: 'UID-66829',
       social: {
         linkedin: 'linkedin.com/in/himanshu-sharma-8b4766251'
