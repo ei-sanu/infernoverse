@@ -5,7 +5,7 @@ import React from 'react';
 interface DiscloseProblemsProps {
     onBack: () => void;
 }
-
+// comment it like nobody else
 const DiscloseProblems: React.FC<DiscloseProblemsProps> = ({ onBack }) => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-[#000000] via-[#0d0d1a] to-[#000000]">
