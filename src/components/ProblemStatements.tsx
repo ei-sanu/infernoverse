@@ -1,6 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Heart, Leaf, Shield, Car, Home, ArrowLeft } from 'lucide-react';
+import { Apple, Archive, ArrowLeft, Bot, Brain, Droplet, Flame, Globe, GraduationCap, Heart, HeartPulse, Leaf, Lock, Navigation, PartyPopper, Recycle, Shield, Sprout, Sun, Users } from 'lucide-react';
+import React from 'react';
 
 interface ProblemStatementsProps {
   onBack: () => void;
@@ -10,105 +10,235 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ onBack }) => {
   const problems = [
     {
       id: 1,
-      icon: Brain,
-      title: 'AI-Powered Mental Health Assistant',
-      category: 'Healthcare',
-      difficulty: 'Advanced',
-      description: 'Develop an AI assistant that can provide real-time mental health support, mood tracking, and personalized recommendations for stress management and emotional well-being.',
-      requirements: [
-        'Natural language processing for conversation',
-        'Sentiment analysis and mood detection',
-        'Personalized recommendation engine',
-        'Crisis detection and intervention protocols',
-        'Privacy-first approach with data encryption'
-      ],
-      techStack: ['Python', 'TensorFlow/PyTorch', 'NLP Libraries', 'React/Flutter', 'Node.js'],
-      prizes: '₹25,000 + Internship Opportunities'
+      icon: Heart,
+      title: 'Project Hearthline — Global Crisis Communication App',
+      description: 'After satellite collapse, emergency response networks vanished. Design a progressive web app (PWA) that enables offline-first communication between local relief teams using mesh or peer networks.',
+      parameters: [
+        'Offline-first design',
+        'Emergency alerts',
+        'Device syncing'
+      ]
     },
     {
       id: 2,
       icon: Leaf,
-      title: 'Smart Agricultural Monitoring System',
-      category: 'Agriculture',
-      difficulty: 'Intermediate',
-      description: 'Create an IoT-based AI solution that monitors crop health, soil conditions, and weather patterns to optimize farming practices and increase yield.',
-      requirements: [
-        'Computer vision for crop health analysis',
-        'IoT sensor integration for soil/weather data',
-        'Predictive analytics for crop yield',
-        'Mobile app for farmers',
-        'Real-time alerts and recommendations'
-      ],
-      techStack: ['Python', 'OpenCV', 'IoT Sensors', 'Machine Learning', 'Mobile Development'],
-      prizes: '₹20,000 + Mentorship Program'
+      title: 'EcoPulse — Planetary Carbon Tracker',
+      description: 'In 2095, carbon footprint tracking became mandatory, but systems failed due to corporate manipulation. Build a transparent carbon tracking dashboard where users can visualize, compare, and offset their digital carbon footprint.',
+      parameters: [
+        'Data visualization',
+        'Real-time updates',
+        'Carbon estimation logic'
+      ]
     },
     {
       id: 3,
-      icon: Car,
-      title: 'Autonomous Traffic Management',
-      category: 'Smart Cities',
-      difficulty: 'Advanced',
-      description: 'Design an AI system that can optimize traffic flow in real-time, reduce congestion, and improve road safety through intelligent traffic signal control.',
-      requirements: [
-        'Computer vision for traffic analysis',
-        'Real-time traffic optimization algorithms',
-        'Integration with existing traffic infrastructure',
-        'Emergency vehicle prioritization',
-        'Environmental impact reduction'
-      ],
-      techStack: ['Python', 'Computer Vision', 'Reinforcement Learning', 'Edge Computing', 'APIs'],
-      prizes: '₹25,000 + Industry Partnership'
+      icon: Brain,
+      title: 'NeuraCare — AI Burnout Detection Platform',
+      description: 'Humans fused with neural tech, but stress levels skyrocketed. Develop a web app that detects burnout symptoms via user text input and suggests digital detox schedules or breathing sessions.',
+      parameters: [
+        'Sentiment analysis',
+        'Personalization',
+        'Privacy compliance'
+      ]
     },
     {
       id: 4,
       icon: Shield,
-      title: 'AI Cybersecurity Threat Detector',
-      category: 'Cybersecurity',
-      difficulty: 'Advanced',
-      description: 'Build an AI-powered system that can detect, analyze, and respond to cybersecurity threats in real-time, protecting digital infrastructure.',
-      requirements: [
-        'Anomaly detection algorithms',
-        'Real-time threat analysis',
-        'Automated response mechanisms',
-        'Network traffic monitoring',
-        'Threat intelligence integration'
-      ],
-      techStack: ['Python', 'Machine Learning', 'Network Security', 'Big Data', 'APIs'],
-      prizes: '₹30,000 + Job Opportunities'
+      title: 'TruthLine — Decentralized News Verification Portal',
+      description: 'Misinformation became state currency. Truth vanished. Create a crowdsourced fact-verification web platform where users can report fake news and verify content collaboratively.',
+      parameters: [
+        'Trust scoring',
+        'Peer moderation',
+        'Simple UX'
+      ]
     },
     {
       id: 5,
-      icon: Heart,
-      title: 'Medical Diagnosis Assistant',
-      category: 'Healthcare',
-      difficulty: 'Advanced',
-      description: 'Develop an AI assistant that can help healthcare professionals with preliminary diagnosis based on symptoms, medical history, and diagnostic images.',
-      requirements: [
-        'Medical image analysis (X-rays, MRIs)',
-        'Symptom analysis and pattern recognition',
-        'Integration with medical databases',
-        'Explainable AI for medical decisions',
-        'HIPAA-compliant data handling'
-      ],
-      techStack: ['Python', 'Deep Learning', 'Medical Imaging', 'NLP', 'Secure APIs'],
-      prizes: '₹25,000 + Research Collaboration'
+      icon: Archive,
+      title: 'Re:Link — Memory Vault for the Lost Web',
+      description: 'Data corruption erased billions of memories. Build a web archive app that lets people upload, tag, and preserve their digital memories (photos, texts, videos) securely for future generations.',
+      parameters: [
+        'File encryption',
+        'Categorization',
+        'Sentimental UI design'
+      ]
     },
     {
       id: 6,
-      icon: Home,
-      title: 'Smart Energy Management System',
-      category: 'Sustainability',
-      difficulty: 'Intermediate',
-      description: 'Create an AI solution that optimizes energy consumption in smart homes and buildings, reducing costs and environmental impact.',
-      requirements: [
-        'Energy consumption prediction',
-        'Smart device integration',
-        'User behavior analysis',
-        'Renewable energy optimization',
-        'Cost-benefit analysis dashboard'
-      ],
-      techStack: ['Python', 'IoT', 'Time Series Analysis', 'Web Development', 'Mobile Apps'],
-      prizes: '₹20,000 + Startup Incubation'
+      icon: HeartPulse,
+      title: 'PulseNet — Mental Resilience Hub',
+      description: 'Humanity\'s emotional bandwidth broke down. Design an AI-powered mental health platform that detects mood, provides mindfulness modules, and connects users to virtual support circles.',
+      parameters: [
+        'Emotion detection',
+        'Peer safety',
+        'Adaptive UI'
+      ]
+    },
+    {
+      id: 6,
+      icon: HeartPulse,
+      title: 'PulseNet — Mental Resilience Hub',
+      description: 'Humanity\'s emotional bandwidth broke down. Design an AI-powered mental health platform that detects mood, provides mindfulness modules, and connects users to virtual support circles.',
+      parameters: [
+        'Emotion detection',
+        'Peer safety',
+        'Adaptive UI'
+      ]
+    },
+    {
+      id: 7,
+      icon: Droplet,
+      title: 'AquaSync — Smart Water Network Monitor',
+      description: 'Oceans turned acidic, freshwater systems collapsed. Develop a real-time monitoring web dashboard that shows water availability, pollution levels, and purification progress by region.',
+      parameters: [
+        'API integration',
+        'Interactive map',
+        'Data clarity'
+      ]
+    },
+    {
+      id: 8,
+      icon: Sun,
+      title: 'Helios Grid — Renewable Energy Control System',
+      description: 'Energy grids are unstable, AI monopolized power distribution. Create a dashboard interface for managing decentralized renewable microgrids where users can monitor and trade excess solar energy.',
+      parameters: [
+        'Real-time energy flow',
+        'Peer-to-peer trade simulation',
+        'Graph-based visualization'
+      ]
+    },
+    {
+      id: 9,
+      icon: Lock,
+      title: 'EchoGuard — Personal Data Defense Interface',
+      description: 'Data leaks became daily disasters. Design a privacy dashboard that allows users to monitor app permissions, detect suspicious access, and revoke control from one place.',
+      parameters: [
+        'Security simulation',
+        'Dashboard clarity',
+        'Threat alerts'
+      ]
+    },
+    {
+      id: 10,
+      icon: Sprout,
+      title: 'FarmSense — Smart Agriculture Monitor',
+      description: 'Food systems were digitized, then abandoned. Build a web platform for farmers that tracks crop health using simulated satellite data and recommends actions based on weather and soil health.',
+      parameters: [
+        'Visualization',
+        'Recommendation system',
+        'Accessibility (rural UI)'
+      ]
+    },
+    {
+      id: 11,
+      icon: PartyPopper,
+      title: 'ReVibe — Sustainable Festival App',
+      description: 'Humans began rebuilding joy through small community gatherings. Design a web app that promotes eco-friendly local events with carbon impact calculators and digital reward badges for sustainable participation.',
+      parameters: [
+        'Event management',
+        'Carbon tracking',
+        'Community engagement'
+      ]
+    },
+    {
+      id: 12,
+      icon: Users,
+      title: 'MindMesh — Collective Problem Solving Platform',
+      description: 'In the post-AI world, collective human intelligence became the last algorithm. Build a crowdsourced idea-sharing network where users brainstorm global solutions collaboratively with voting and tagging systems.',
+      parameters: [
+        'Collaboration tools',
+        'Voting logic',
+        'UX scalability'
+      ]
+    },
+    {
+      id: 13,
+      icon: Bot,
+      title: 'CodeEthics — AI Transparency Portal',
+      description: 'AI systems reappeared, opaque and manipulative. Develop a web portal that displays how different AI models make decisions, with visualized biases and community explanations.',
+      parameters: [
+        'Explainable AI visualization',
+        'User interactivity',
+        'Ethical design'
+      ]
+    },
+    {
+      id: 14,
+      icon: Shield,
+      title: 'SafeLink — Digital Safety Learning Hub',
+      description: 'Cyber crimes evolved into neural hijacking. Create a learning platform that teaches digital defense, password security, and phishing awareness through gamified lessons.',
+      parameters: [
+        'Quiz interactivity',
+        'Adaptive learning',
+        'Visual storytelling'
+      ]
+    },
+    {
+      id: 15,
+      icon: Flame,
+      title: 'FireWatch Nexus — Forest Fire Awareness Network',
+      description: "Earth's lungs still burn. Design a real-time environmental awareness platform integrating alerts, community reporting, and AI-based fire predictions.",
+      parameters: [
+        'Live updates',
+        'Interactive map',
+        'Prevention education'
+      ]
+    },
+    {
+      id: 16,
+      icon: GraduationCap,
+      title: 'Re:Skill — AI Job Displacement Hub',
+      description: 'Billions lost jobs to automation. Rebuilding needed re-skilling. Build a career transition app that recommends courses and communities for people shifting industries post-AI.',
+      parameters: [
+        'Personalized recommendations',
+        'Progress tracking',
+        'Motivational design'
+      ]
+    },
+    {
+      id: 17,
+      icon: Recycle,
+      title: 'CityZero — Zero-Waste Urban Management System',
+      description: 'Waste management systems failed; cities drowned in garbage. Develop a municipal dashboard for tracking recycling, composting, and landfill metrics with community leaderboards.',
+      parameters: [
+        'Data visualization',
+        'Citizen participation',
+        'Mobile responsiveness'
+      ]
+    },
+    {
+      id: 18,
+      icon: Navigation,
+      title: 'SafeRoute — Smart Disaster Navigation',
+      description: 'In the chaos, old GPS systems misled survivors. Create a navigation app prototype that finds safe evacuation paths based on live hazard data (fires, floods, blocked routes).',
+      parameters: [
+        'Map API',
+        'Real-time alerts',
+        'Route optimization'
+      ]
+    },
+    {
+      id: 19,
+      icon: Apple,
+      title: 'BloomNet — Food Sharing & Surplus Redistribution',
+      description: 'Hunger and waste coexisted. Design a community food exchange web app connecting donors, NGOs, and local shelters using geolocation-based coordination.',
+      parameters: [
+        'Live map',
+        'Real-time matching',
+        'Simplicity of flow'
+      ]
+    },
+    {
+      id: 20,
+      icon: Globe,
+      title: 'Humanity OS — The Unified Rebuild Dashboard',
+      description: 'Final mission. Combine at least two solutions above into one integrated "World Reboot Platform" that connects sustainability, safety, and emotional well-being into a single cohesive experience.',
+      parameters: [
+        'Integration',
+        'Consistency',
+        'Story-driven design',
+        'Innovation'
+      ]
     }
   ];
 
@@ -138,10 +268,15 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ onBack }) => {
 
           <div className="text-center mb-12">
             <h1 className="text-5xl font-bold text-cyan-400 mb-6">PROBLEM STATEMENTS</h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Choose from these exciting AI challenges designed to solve real-world problems. 
-              Each problem statement offers unique opportunities to showcase your skills and make an impact.
-            </p>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-white mb-2">ROUND 2: "THE LAST SIGNAL — REBUILD THE NETWORK"</h2>
+              <h3 className="text-2xl font-orbitron bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent font-bold mb-2">
+                Theme: "Reimagining Humanity in the Age of Digital Collapse."
+              </h3>
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                Focus: Web & App Development
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -155,58 +290,27 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ onBack }) => {
                 whileHover={{ scale: 1.02 }}
                 className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8"
               >
-                <div className="flex items-start justify-between mb-6">
+                <div className="flex items-start mb-6">
                   <div className="flex items-center space-x-3">
                     <problem.icon className="w-8 h-8 text-cyan-400" />
                     <div>
                       <h3 className="text-xl font-bold text-white mb-1">{problem.title}</h3>
-                      <span className="text-cyan-400 text-sm">{problem.category}</span>
                     </div>
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(problem.difficulty)}`}>
-                    {problem.difficulty}
-                  </span>
                 </div>
 
                 <p className="text-gray-300 mb-6 leading-relaxed">{problem.description}</p>
 
                 <div className="mb-6">
-                  <h4 className="text-cyan-400 font-semibold mb-3">Key Requirements:</h4>
+                  <h4 className="text-cyan-400 font-semibold mb-3">Parameters:</h4>
                   <ul className="space-y-2">
-                    {problem.requirements.map((req, reqIndex) => (
-                      <li key={reqIndex} className="text-gray-300 text-sm flex items-start">
+                    {problem.parameters.map((param, paramIndex) => (
+                      <li key={paramIndex} className="text-gray-300 text-sm flex items-start">
                         <span className="text-cyan-400 mr-2">•</span>
-                        {req}
+                        {param}
                       </li>
                     ))}
                   </ul>
-                </div>
-
-                <div className="mb-6">
-                  <h4 className="text-cyan-400 font-semibold mb-3">Suggested Tech Stack:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {problem.techStack.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-slate-700/50 text-gray-300 text-xs rounded-full border border-gray-600"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-gray-600">
-                  <div className="text-green-400 font-semibold">
-                    🏆 {problem.prizes}
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-cyan-400/20 text-cyan-400 rounded-lg hover:bg-cyan-400/30 transition-colors"
-                  >
-                    Choose This Problem
-                  </motion.button>
                 </div>
               </motion.div>
             ))}
@@ -218,35 +322,53 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ onBack }) => {
             viewport={{ once: true }}
             className="mt-12 bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8 text-center"
           >
-            <h3 className="text-2xl font-bold text-cyan-400 mb-4">Additional Guidelines</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-              <div>
-                <h4 className="text-white font-semibold mb-2">Submission Requirements</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• Working prototype/demo</li>
-                  <li>• Source code repository</li>
-                  <li>• Documentation & README</li>
-                  <li>• 3-minute demo video</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-white font-semibold mb-2">Judging Criteria</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• Innovation & Creativity (30%)</li>
-                  <li>• Technical Implementation (30%)</li>
-                  <li>• Problem Solving (25%)</li>
-                  <li>• Presentation & Demo (15%)</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-white font-semibold mb-2">Resources Available</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• Cloud credits (AWS/Azure/GCP)</li>
-                  <li>• API access keys</li>
-                  <li>• Datasets and libraries</li>
-                  <li>• 24/7 mentor support</li>
-                </ul>
-              </div>
+            <h3 className="text-2xl font-bold text-cyan-400 mb-6">EVALUATION PARAMETERS</h3>
+            <p className="text-gray-300 mb-6">All projects will be evaluated based on the following criteria:</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              {[
+                {
+                  criteria: 'Innovation & Relevance to Future Crisis',
+                  weight: '25%',
+                  color: 'rgb(34, 211, 238)' // cyan-400
+                },
+                {
+                  criteria: 'UI/UX Design & Accessibility',
+                  weight: '20%',
+                  color: 'rgb(74, 222, 128)' // green-400
+                },
+                {
+                  criteria: 'Functionality & Integration',
+                  weight: '20%',
+                  color: 'rgb(250, 204, 21)' // yellow-400
+                },
+                {
+                  criteria: 'Real-World Applicability',
+                  weight: '20%',
+                  color: 'rgb(251, 146, 60)' // orange-400
+                },
+                {
+                  criteria: 'Scalability & Story Consistency',
+                  weight: '15%',
+                  color: 'rgb(167, 139, 250)' // purple-400
+                }
+              ].map((param, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-slate-800/30 border border-cyan-400/10 rounded-lg p-4"
+                >
+                  <div className="text-lg font-semibold mb-2" style={{ color: param.color }}>
+                    {param.weight}
+                  </div>
+                  <div className="text-gray-300 text-sm">
+                    {param.criteria}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </motion.div>
