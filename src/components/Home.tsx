@@ -221,14 +221,20 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             transition={{ delay: 1, duration: 0.5 }}
           >
             {/* Register Now Button - Primary */}
-            <motion.button
+            {/* <motion.button
               onClick={() => window.open('https://tinyurl.com/MacbeaseInfernoverse', '_blank')}
               className="px-8 py-4 bg-cyan-400 text-slate-900 rounded-lg font-bold text-lg hover:bg-cyan-300 transition-colors w-full sm:w-auto"
               {...hoverConfig}
             >
               REGISTER NOW
+            </motion.button> */}
+            <motion.button
+              onClick={() => window.open('https://chat.whatsapp.com/LSKFkvnQmzEFt9jGtAepsv?mode=wwt')} // replace with actual invite link
+              className="px-8 py-4 bg-cyan-400 text-slate-900 rounded-lg font-bold text-lg hover:bg-cyan-300 transition-colors w-full sm:w-auto"
+              {...hoverConfig}
+            >
+              JOIN WHATSAPP GROUP
             </motion.button>
-
             {/* Problem Statements Button - Secondary */}
             <motion.button
               onClick={() => setCurrentPage('problem-statements')}
@@ -254,6 +260,22 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
               MARK ATTENDANCE
             </motion.button>
           </motion.div>
+
+          {/* Join WhatsApp Group Button - Secondary, Separated */}
+          {/* <motion.div
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4, duration: 0.5 }}
+          >
+            <motion.button
+              onClick={() => window.open('https://chat.whatsapp.com/LSKFkvnQmzEFt9jGtAepsv?mode=wwt')} // replace with actual invite link
+              className="px-8 py-4 bg-cyan-400 text-slate-900 rounded-lg font-bold text-lg hover:bg-cyan-300 transition-colors w-full sm:w-auto"
+              {...hoverConfig}
+            >
+              JOIN WHATSAPP GROUP
+            </motion.button>
+          </motion.div> */}
         </motion.div>
       </section>
 
@@ -465,11 +487,18 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-[#00f0ff] mb-4 neon-text">REGISTRATION STATUS</h2>
-            <div className="text-2xl font-orbitron font-bold text-green-400 mb-6 animate-pulse">
-              EVENT OPEN
+
+            <div className="text-2xl font-orbitron font-bold text-red-400 mb-6">
+              EVENT CLOSED
             </div>
+
+            <p className="font-exo text-lg text-[#e6e6e6] mb-6 max-w-3xl mx-auto">
+              If you want to participate, please use the Contact page — submit the contact form
+              or call the phone numbers listed there to request registration.
+            </p>
+
             <motion.button
-              onClick={() => window.open('https://tinyurl.com/MacbeaseInfernoverse', '_blank')}
+              onClick={() => setCurrentPage('contact')}
               whileHover={{
                 scale: 1.05,
                 textShadow: "0 0 8px rgb(0,240,255)",
@@ -479,7 +508,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
               className="neon-button px-8 py-4 bg-[#00f0ff] text-black font-orbitron font-black
               text-lg rounded-lg hover:bg-[#00d8e6] transition-all duration-300"
             >
-              REGISTER HERE
+              CONTACT PAGE
             </motion.button>
           </motion.div>
         </div>
