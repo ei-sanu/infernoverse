@@ -33,7 +33,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     },
     {
       name: 'Vinay Kothari',
-      role: 'Operations Manager',
+      role: 'CO-CEO',
       image: 'vinayf.jpeg',
       bio: 'Event management expert with focus on tech conferences and hackathons',
       social: {
@@ -102,7 +102,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
       name: 'Raghu Raja Sharma',
       role: 'Technical Expert, CSE Department',
       image: '/raghurajguest.jpeg', // Add image path when available
-      uid: 'UID-30782',
+
       social: {
         linkedin: 'linkedin.com/in/raghu-sharma-437571146'
       }
@@ -111,7 +111,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
       name: 'Himanshu Sharma',
       role: 'Ex-SDE @Amazon | Founder @CodeDevh',
       image: '/himanshusir.jpeg', // Add image path when available
-      uid: 'UID-66829',
+
       social: {
         linkedin: 'linkedin.com/in/himanshu-sharma-8b4766251'
       }
@@ -120,7 +120,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
       name: 'Praful Yadav',
       role: 'Full Stack Developer @CodeBooks Solutions',
       image: '/prafulyadavguest.jpeg', // Add image path when available
-      uid: 'UID-66843',
+
       social: {
         linkedin: 'linkedin.com/in/praful-yadav-b46100215'
       }
@@ -132,7 +132,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
       name: 'Dr. Nitin Bhardwaj',
       role: 'Deputy Dean, Division of Youth Affairs',
       organization: 'Lovely Professional University',
-      image: '/nitin-bhardwaj.jpg', // Add the image to your public folder
+      image: '/nitinsir.jpeg', // Add the image to your public folder
       speciality: 'Youth Development & Student Affairs Expert',
       bio: 'Leading academic administrator with expertise in student development and university affairs',
       social: {
@@ -156,7 +156,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
     {
       name: 'Student Coordinator Team',
       role: 'Campus Ambassadors',
-      count: '15+ Students',
+      count: '30+ Students',
       description: 'Dedicated students from various universities helping with event coordination'
     },
     {

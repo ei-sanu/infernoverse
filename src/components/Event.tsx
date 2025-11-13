@@ -91,7 +91,7 @@ const Event: React.FC = () => {
             <div className="text-center">
               <Calendar className="w-12 h-12 text-cyan-400 mx-auto mb-3" />
               <h3 className="text-lg font-semibold text-white mb-2">Date</h3>
-              <p className="text-gray-300">September 20, 2025</p>
+              <p className="text-gray-300">November 14-15, 2025</p>
             </div>
             <div className="text-center">
               <Clock className="w-12 h-12 text-cyan-400 mx-auto mb-3" />
@@ -106,13 +106,13 @@ const Event: React.FC = () => {
             <div className="text-center">
               <Users className="w-12 h-12 text-cyan-400 mx-auto mb-3" />
               <h3 className="text-lg font-semibold text-white mb-2">Participants</h3>
-              <p className="text-gray-300">1000+ Innovators</p>
+              <p className="text-gray-300">500+ Innovators</p>
             </div>
           </div>
         </motion.div>
 
         {/* Schedule */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -141,7 +141,7 @@ const Event: React.FC = () => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Prizes */}
         <motion.div
@@ -234,12 +234,13 @@ const Event: React.FC = () => {
           <div className="bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-3">Essential Tech</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">Essential Items</h3>
                 <ul className="text-gray-300 space-y-2">
                   <li>💻 Laptop with charger</li>
                   <li>🔌 Power strips & adapters</li>
                   <li>🖱️ Mouse & other peripherals</li>
                   <li>📱 Mobile phone</li>
+                  <li>📝 Notebook & pen</li>
                 </ul>
               </div>
               <div>
@@ -256,7 +257,7 @@ const Event: React.FC = () => {
                 <ul className="text-gray-300 space-y-2">
                   <li>🎧 Headphones</li>
                   <li>☕ Energy drinks/snacks</li>
-                  <li>📝 Notebook & pen</li>
+
                   {/* <li>🛌 Sleeping bag/pillow</li> */}
                 </ul>
               </div>
