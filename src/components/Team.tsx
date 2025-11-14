@@ -11,7 +11,7 @@ const Team: React.FC<TeamProps> = ({ setCurrentPage }) => {
   const organizers = [
     {
       name: 'Shivansh Singh',
-      role: 'Event Director',
+      role: 'Event Director and Chief Executive Officer',
       image: 'shivansh.jpeg',
       bio: 'Leads the vision and execution of the hackathon, ensuring every detail aligns with the event’s goals. Coordinates teams, schedules, and resources to deliver an engaging and impactful experience for all participants.',
       social: {
