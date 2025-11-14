@@ -105,7 +105,7 @@ const App: React.FC = () => {
       case 'refund':
         return <RefundPolicy />;
       case 'attendance':
-        const attendanceStarted = false;
+        const attendanceStarted = true;
         return attendanceStarted ? (
           <AttendanceMark onBack={() => handlePageChange('home')} />
         ) : (
