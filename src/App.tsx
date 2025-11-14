@@ -86,7 +86,7 @@ const App: React.FC = () => {
       case 'event':
         return <Event />;
       case 'problem-statements':
-        const hackathonStarted = false;
+        const hackathonStarted = true;
         return hackathonStarted ? (
           <ProblemStatements onBack={() => handlePageChange('home')} />
         ) : (
