@@ -245,9 +245,9 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
             </motion.button>
           </motion.div>
 
-          {/* Attendance Button - Secondary, Separated */}
+          {/* Attendance + Submit Project Buttons (side-by-side on wider screens) */}
           <motion.div
-            className="flex justify-center mb-8"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.5 }}
@@ -258,6 +258,14 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage, user }) => {
               {...hoverConfig}
             >
               MARK ATTENDANCE
+            </motion.button>
+
+            <motion.button
+              onClick={() => window.open('https://forms.gle/NrrR9ZKDWwbX6RNZA', '_blank')}
+              className="px-8 py-4 bg-cyan-400 text-slate-900 rounded-lg font-bold text-lg hover:bg-cyan-300 transition-colors w-full sm:w-auto max-w-md"
+              {...hoverConfig}
+            >
+              SUBMIT PROJECT
             </motion.button>
           </motion.div>
 
